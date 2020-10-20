@@ -53,14 +53,14 @@ public class AccountAPITest implements BaseTest {
 
     @Test
     public void getSwapSubAccountInfo() {
-        SwapSubAccountInfoResponse response = huobiAPIService.getSwapSubAccountInfo("", 114390100l);
+        SwapSubAccountInfoResponse response = huobiAPIService.getSwapSubAccountInfo("", 1l);
         logger.debug("5.查询单个子账户资产信息：{}", JSON.toJSONString(response));
         logger.debug(response.getStatus());
     }
 
     @Test
     public void getSwapSubPositionInfo() {
-        SwapSubPositionInfoResponse response = huobiAPIService.getSwapSubPositionInfo("BTC-USDT", 114390100l);
+        SwapSubPositionInfoResponse response = huobiAPIService.getSwapSubPositionInfo("BTC-USDT", 1l);
         logger.debug("6.查询单个子账户持仓信息：{}", JSON.toJSONString(response));
         logger.debug(response.getStatus());
     }
@@ -119,7 +119,7 @@ public class AccountAPITest implements BaseTest {
     @Test
     public void getOptionMasterSubTransferResponse() {
         SwapMasterSubTransferRequest request = SwapMasterSubTransferRequest.builder()
-                .subUid(114390100l)
+                .subUid(1l)
                 .asset("usdt")
                 .fromMarginAccount("btc-usdt")
                 .toMarginAccount("btc-usdt")
