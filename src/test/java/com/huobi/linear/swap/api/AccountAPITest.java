@@ -156,4 +156,10 @@ public class AccountAPITest implements BaseTest {
         logger.debug("15.获取用户API指标禁用信息：{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void getSwapAvailableLevelRateResponse(){
+        SwapAvailableLevelRateResponse response=huobiAPIService.getSwapAvailableLevelRate("");
+        logger.debug("16.查询用户可用杠杆倍数：{}", JSON.toJSONString(response));
+    }
+
 }

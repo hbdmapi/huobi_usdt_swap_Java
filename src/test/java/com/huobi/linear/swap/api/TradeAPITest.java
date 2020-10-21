@@ -229,4 +229,11 @@ public class TradeAPITest implements BaseTest {
         SwapTriggerHisordersResponse response = huobiAPIService.swapTriggerHisordersResponse(request);
         logger.debug("15.获取计划委托历史委托：{}", JSON.toJSONString(response));
     }
+
+    @Test
+    public void getSwapSwitchLeverRateResponse(){
+        SwapSwitchLeverRateResponse response=huobiAPIService.getSwapSwitchLeverRate("BTC-USDT",10);
+        logger.debug("16.切换杠杆：{}", JSON.toJSONString(response));
+    }
+
 }

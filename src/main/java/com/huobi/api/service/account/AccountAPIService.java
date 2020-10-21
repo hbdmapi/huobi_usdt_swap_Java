@@ -42,7 +42,7 @@ public interface AccountAPIService {
 
     SwapApiTradingStatusResponse getSwapApiTradingStatusResponse();//获取用户API指标禁用信息
 
-
+    SwapAvailableLevelRateResponse getSwapAvailableLevelRate(String contractCode);//切换杠杆
 
 
 }

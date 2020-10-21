@@ -38,7 +38,7 @@ public class TransferAPITest implements BaseTest {
                 .amount(BigDecimal.valueOf(1))
                 .build();
         UsdtSwapTransferResponse response = transferApiService.transfer(request);
-        logger.debug("1.现货-USDT永续账户间进行资金的划转：{}", JSON.toJSONString(response));
+        logger.debug("1.现货-USDT本位永续账户间进行资金的划转：{}", JSON.toJSONString(response));
 
 
     }

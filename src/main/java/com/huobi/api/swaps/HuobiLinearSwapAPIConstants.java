@@ -1,6 +1,6 @@
 package com.huobi.api.swaps;
 
-public class HuobiLinearSwapAPIOptions {
+public class HuobiLinearSwapAPIConstants {
 
     //合约市场行情接口
     public static final String SWAP_CONTRACT_INFO = "/linear-swap-api/v1/swap_contract_info"; // 1.获取合约信息
@@ -50,6 +50,8 @@ public class HuobiLinearSwapAPIOptions {
     public static final String SWAP_TRANSFER_INNER = "/linear-swap-api/v1/swap_transfer_inner";//14.同账号不同保证金账户的划转
     public static final String SWAP_API_TRADING_STATUS = "/linear-swap-api/v1/swap_api_trading_status";//15.获取用户API指标禁用信息
 
+    public static final String SWAP_AVAILABLE_LEVEL_RATE = "/linear-swap-api/v1/swap_available_level_rate";//16.查询用户可用杠杆倍数
+
     //合约交易接口
     public static final String SWAP_ORDER = "/linear-swap-api/v1/swap_order"; // 1.合约下单
     public static final String SWAP_BATCHORDER = "/linear-swap-api/v1/swap_batchorder"; // 2.合约批量下单
@@ -68,6 +70,8 @@ public class HuobiLinearSwapAPIOptions {
     public static final String SWAP_TRIGGER_CANCELALL = "/linear-swap-api/v1/swap_trigger_cancelall";//计划委托全部撤单
     public static final String SWAP_TRIGGER_OPENORDERS = "/linear-swap-api/v1/swap_trigger_openorders";////获取计划委托当前委托
     public static final String SWAP_TRIGGER_HISORDERS = "/linear-swap-api/v1/swap_trigger_hisorders";////获取计划委托历史委托
+
+    public static final String SWAP_SWITCH_LEVER_RATE = "/linear-swap-api/v1/swap_switch_lever_rate";// 切换杠杆
 
     //合约划转接口
     public static final String USDT_SWAP_TRANSFER = "/v2/account/transfer"; // 1.现货-USDT永续账户间进行资金的划转

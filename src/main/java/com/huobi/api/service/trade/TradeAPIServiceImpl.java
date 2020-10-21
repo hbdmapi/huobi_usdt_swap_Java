@@ -1,7 +1,7 @@
 package com.huobi.api.service.trade;
 
 import com.alibaba.fastjson.JSON;
-import com.huobi.api.swaps.HuobiLinearSwapAPIOptions;
+import com.huobi.api.swaps.HuobiLinearSwapAPIConstants;
 import com.huobi.api.exception.ApiException;
 import com.huobi.api.request.trade.*;
 import com.huobi.api.response.trade.*;
@@ -48,7 +48,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_ORDER, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_ORDER, params);
             logger.debug("body:{}", body);
             SwapOrderResponse response = JSON.parseObject(body, SwapOrderResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -90,7 +90,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
             params.put("orders_data", listMap);
 
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_BATCHORDER, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_BATCHORDER, params);
             logger.debug("body:{}", body);
             SwapBatchorderResponse response = JSON.parseObject(body, SwapBatchorderResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -118,7 +118,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
                 params.put("client_order_id", request.getClientOrderId());
             }
             params.put("contract_code", request.getContractCode().toUpperCase());
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_CANCEL, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_CANCEL, params);
             logger.debug("body:{}", body);
             SwapCancelResponse response = JSON.parseObject(body, SwapCancelResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -141,7 +141,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("contract_code", request.getContractCode());
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_CANCELALL, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_CANCELALL, params);
             logger.debug("body:{}", body);
             SwapCancelallResponse response = JSON.parseObject(body, SwapCancelallResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -166,7 +166,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getOrderId() != null) {
                 params.put("order_id", request.getOrderId());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_ORDER_INFO, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_ORDER_INFO, params);
             logger.debug("body:{}", body);
             SwapOrderInfoResponse response = JSON.parseObject(body, SwapOrderInfoResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -201,7 +201,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_ORDER_DETAIL, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_ORDER_DETAIL, params);
             logger.debug("body:{}", body);
             SwapOrderDetailResponse response = JSON.parseObject(body, SwapOrderDetailResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -229,7 +229,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
                 params.put("page_size", request.getPageSize());
             }
             params.put("contract_code", request.getContractCode().toUpperCase());
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_OPENORDERS, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_OPENORDERS, params);
             logger.debug("body:{}", body);
             SwapOpenordersResponse response = JSON.parseObject(body, SwapOpenordersResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -258,7 +258,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getContractCode() != null) {
                 params.put("page_index", request.getPageIndex());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_HISORDERS, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_HISORDERS, params);
             logger.debug("body:{}", body);
             SwapHisordersResponse response = JSON.parseObject(body, SwapHisordersResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -285,7 +285,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_MATCHRESULTS, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_MATCHRESULTS, params);
             logger.debug("body:{}", body);
             SwapMatchresultsResponse response = JSON.parseObject(body, SwapMatchresultsResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -312,7 +312,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_LIGHTNING_CLOSE_POSITION, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_LIGHTNING_CLOSE_POSITION, params);
             logger.debug("body:{}", body);
             SwapLightningClosePositionResponse response = JSON.parseObject(body, SwapLightningClosePositionResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -344,7 +344,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getLeverRate() != null) {
                 params.put("lever_rate", request.getLeverRate());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_TRIGGER_ORDER, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_ORDER, params);
             logger.debug("body:{}", body);
             SwapTriggerOrderResponse response = JSON.parseObject(body, SwapTriggerOrderResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -363,7 +363,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             Map<String, Object> params = new HashMap<>();
             params.put("contract_code", request.getContractCode().toUpperCase());
             params.put("order_id", request.getOrderId());
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_TRIGGER_CANCEL, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_CANCEL, params);
             logger.debug("body:{}", body);
             SwapTriggerCancelResponse response = JSON.parseObject(body, SwapTriggerCancelResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -382,7 +382,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("contract_code", request.getContractCode());
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_TRIGGER_CANCELALL, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_CANCELALL, params);
             logger.debug("body:{}", body);
             SwapTriggerCancelallResponse response = JSON.parseObject(body, SwapTriggerCancelallResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -406,7 +406,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_TRIGGER_OPENORDERS, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_OPENORDERS, params);
             logger.debug("body:{}", body);
             SwapTriggerOpenordersResponse response = JSON.parseObject(body, SwapTriggerOpenordersResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -434,7 +434,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
-            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIOptions.SWAP_TRIGGER_HISORDERS, params);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_HISORDERS, params);
             logger.debug("body:{}", body);
             SwapTriggerHisordersResponse response = JSON.parseObject(body, SwapTriggerHisordersResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
@@ -445,4 +445,24 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public SwapSwitchLeverRateResponse getSwapSwitchLeverRate(String contractCode, Integer leverRate) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",contractCode.toUpperCase());
+            params.put("lever_rate",leverRate);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_SWITCH_LEVER_RATE, params);
+            logger.debug("body:{}", body);
+            SwapSwitchLeverRateResponse response = JSON.parseObject(body, SwapSwitchLeverRateResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
 }
