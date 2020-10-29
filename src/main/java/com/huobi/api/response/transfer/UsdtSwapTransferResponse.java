@@ -9,16 +9,16 @@ import lombok.Data;
 public class UsdtSwapTransferResponse {
 
     /**
-     * 参数名称	    是否必须	类型	    描述	                取值范围
-     * status	    true	string	状态	                ok, error
-     * data	        true	long	生成的划转订单id
-     * err-code	    true	string	错误码	            具体错误码请见列表
-     * err-msg	    true	string	错误消息	            具体错误码请见列表
+     * 参数名称	是否必须	类型	    描述	            取值范围
+     * success	true	string	状态	            true/false
+     * data	    true	long	生成的划转订单id
+     * code	    true	long	响应码
+     * message	true	string	响应信息
      */
 
-    private String status;
+    private String success;
     private Long data;
-    private String errCode;
-    private String errMsg;
+    private Long code;
+    private String message;
 
 }
