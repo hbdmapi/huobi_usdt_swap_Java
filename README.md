@@ -7,7 +7,7 @@
     <dependency>
          <groupId>com.huobi.linear.swap.api</groupId>
          <artifactId>huobi-linear-swap-api</artifactId>
-         <version>1.0.0</version>
+         <version>1.0.1</version>
     </dependency>
     
   3.Install Lombok Plugin  
