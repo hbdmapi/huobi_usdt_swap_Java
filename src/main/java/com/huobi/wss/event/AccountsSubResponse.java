@@ -56,6 +56,10 @@ public class AccountsSubResponse {
         private Integer leverRate;
         @SerializedName("adjust_factor")
         private BigDecimal adjustFactor;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
 
 
     }

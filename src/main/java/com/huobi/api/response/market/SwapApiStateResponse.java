@@ -37,6 +37,8 @@ public class SwapApiStateResponse {
          * "sub_transfer_master_inner_out": 1,
          * "transfer_inner_in": 1,
          * "transfer_inner_out": 1
+         * "margin_account":"ETH-USDT",
+         * "margin_mode":"isolated"
          */
         private String symbol;
         @SerializedName("contract_code")
@@ -64,6 +66,10 @@ public class SwapApiStateResponse {
         private Integer transferInnerIn;
         @SerializedName("transfer_inner_out")
         private Integer transferInnerOut;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String MarginAccount;
 
     }
 }

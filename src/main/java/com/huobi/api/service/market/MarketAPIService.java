@@ -6,7 +6,7 @@ import com.huobi.api.request.account.SwapMarketHistoryKlineRequest;
 import com.huobi.api.response.market.*;
 
 public interface MarketAPIService {
-    SwapContractInfoResponse getSwapContractInfo(String contractCode);
+    SwapContractInfoResponse getSwapContractInfo(String contractCode,String supportMarginMode);
 
     SwapIndexResponse getSwapIndex(String contractCode);
 

@@ -58,7 +58,9 @@ public class SwapMatchresultsResponse {
              * "order_source":"web",
              * "order_id_str":"758725403280691200",
              * "id":"14499-758725403280691200-1",
-             * "fee_asset":"USDT"
+             * "fee_asset":"USDT",
+             * "margin_mode":"isolated",
+             * "margin_account":"ETH-USDT"
              */
 
             @SerializedName("match_id")
@@ -90,7 +92,10 @@ public class SwapMatchresultsResponse {
             @SerializedName("fee_asset")
             private String feeAsset;
             private String role;
-
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
 
         }
     }

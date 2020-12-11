@@ -67,7 +67,9 @@ public class SwapTriggerHisordersResponse {
              * "order_insert_at":0,
              * "canceled_at":1600918653036,
              * "fail_code":null,
-             * "fail_reason":null
+             * "fail_reason":null,
+             * "margin_mode":"isolated",
+             * "margin_account":"BTC-USDT"
              */
 
             private String symbol;
@@ -111,7 +113,10 @@ public class SwapTriggerHisordersResponse {
             private Integer failCode;
             @SerializedName("fail_reason")
             private String failReason;
-
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
         }
     }
 }

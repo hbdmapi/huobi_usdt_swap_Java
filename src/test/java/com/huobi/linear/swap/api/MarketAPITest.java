@@ -19,7 +19,7 @@ public class MarketAPITest implements BaseTest {
     @Test
     public void getSwapContractInfo() {
         SwapContractInfoResponse result =
-                huobiAPIService.getSwapContractInfo("BTC-USDT");
+                huobiAPIService.getSwapContractInfo("BTC-USDT","all");
         logger.debug("1.获取合约信息：{}", JSON.toJSONString(result));
     }
 

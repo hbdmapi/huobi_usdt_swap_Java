@@ -56,6 +56,10 @@ public class OrdersSubResponse {
     private Long canceledAt;
     @SerializedName("fee_asset")
     private String feeAsset;
+    @SerializedName("margin_mode")
+    private String marginMode;
+    @SerializedName("margin_account")
+    private String marginAccount;
     private List<TradeBean> trade;
 
 

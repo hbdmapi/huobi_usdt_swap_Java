@@ -21,12 +21,15 @@ public class MarketAPIServiceImpl implements MarketAPIService {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public SwapContractInfoResponse getSwapContractInfo(String contractCode) {
+    public SwapContractInfoResponse getSwapContractInfo(String contractCode,String supportMarginMode) {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
             if (StringUtils.isNoneEmpty(contractCode)) {
                 params.put("contract_code", contractCode.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(supportMarginMode)){
+                params.put("support_margin_mode",supportMarginMode);
             }
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.SWAP_CONTRACT_INFO, params);
             logger.debug("body:{}", body);

@@ -42,7 +42,9 @@ public class SwapSubAccountListResponse {
              * "liquidation_price": null,
              * "risk_rate": 238.337523181284512529,
              * "contract_code": "BTC-USDT",
-             * "margin_asset": "USDT"
+             * "margin_asset": "USDT",
+             * "margin_mode":"isolated",
+             * "margin_account":"BTC-USDT"
              */
 
             private String symbol;
@@ -56,6 +58,10 @@ public class SwapSubAccountListResponse {
             private BigDecimal liquidationPrice;
             @SerializedName("risk_rate")
             private BigDecimal riskRate;
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
 
         }
     }

@@ -60,7 +60,9 @@ public class SwapTriggerOpenordersResponse {
              * "order_price":377,
              * "created_at":1600918780316,
              * "order_price_type":"limit",
-             * "status":2
+             * "status":2,
+             * "margin_mode":"isolated",
+             * "margin_account":"BTC-USDT"
              */
 
             private String symbol;
@@ -90,7 +92,10 @@ public class SwapTriggerOpenordersResponse {
             @SerializedName("order_price_type")
             private String orderPriceType;
             private Integer status;
-
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
         }
 
     }

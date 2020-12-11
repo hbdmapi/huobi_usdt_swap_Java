@@ -33,7 +33,8 @@ public class SwapContractInfoResponse {
          * "price_tick": 0.001000000000000000,
          * "create_date": "20200917",
          * "contract_status": 7,
-         * "settlement_date": "1600943400000"
+         * "settlement_date": "1600943400000",
+         * "supportMarginMode":"all"
          */
 
         private String symbol;
@@ -49,6 +50,8 @@ public class SwapContractInfoResponse {
         private String createDate;
         @SerializedName("contract_status")
         private Integer contractStatus;
+        @SerializedName("support_margin_mode")
+        private String supportMarginMode;
 
     }
 }

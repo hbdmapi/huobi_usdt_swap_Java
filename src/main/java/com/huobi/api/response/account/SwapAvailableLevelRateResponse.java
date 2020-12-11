@@ -21,5 +21,7 @@ public class SwapAvailableLevelRateResponse {
         private String contractCode;
         @SerializedName("available_level_rate")
         private String availableLevelRate;
+        @SerializedName("margin_mode")
+        private String marginMode;
     }
 }

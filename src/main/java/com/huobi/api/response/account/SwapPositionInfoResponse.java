@@ -37,6 +37,8 @@ public class SwapPositionInfoResponse {
          * "direction": "sell",
          * "profit": 3.390000000000000000,
          * "last_price": 280,
+         * "margin_mode":"ETH-USDT",
+         * "margin_account":"isolated",
          * "margin_asset": "USDT"
          */
         private String symbol;
@@ -63,5 +65,9 @@ public class SwapPositionInfoResponse {
         private String direction;
         @SerializedName("last_price")
         private BigDecimal lastPrice;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
     }
 }

@@ -43,6 +43,8 @@ public class SwapSubAccountInfoResponse {
          * "margin_static": 10,
          * "contract_code": "ETH-USDT",
          * "margin_asset": "USDT"
+         * "margin_mode":"isolated",
+         * "margin_account":"ETH-USDT"
          */
 
         private String symbol;
@@ -74,6 +76,10 @@ public class SwapSubAccountInfoResponse {
         private BigDecimal adjustFactor;
         @SerializedName("margin_static")
         private BigDecimal marginStatic;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
 
     }
 }

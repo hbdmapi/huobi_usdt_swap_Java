@@ -24,5 +24,7 @@ public class SwapSwitchLeverRateResponse {
         private String contractCode;
         @SerializedName("lever_rate")
         private Integer leverRate;
+        @SerializedName("margin_mode")
+        private String marginMode;
     }
 }

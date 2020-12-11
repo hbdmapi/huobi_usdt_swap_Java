@@ -39,6 +39,8 @@ public class SwapAccountPositionInfoResponse {
          * "adjust_factor": 0.060000000000000000,
          * "margin_static": 5018.308273184124880112,
          * "margin_asset": "USDT"
+         * "marginAccount":"ETH-USDT",
+         * "marginMode":"isolated",
          * "positions":[{"symbol":"ETH","contract_code":"ETH-USDT","volume":3.000000000000000000,"available":3.000000000000000000,"frozen":0E-18,"cost_open":393.000000000000000000,"cost_hold":289.979379000000000000,"profit_unreal":0E-18,"profit_rate":1.310694923664122140,"lever_rate":5,"position_margin":1.739876274000000000,"direction":"sell","profit":3.090618630000000000,"last_price":289.979379,"margin_asset":"USDT"}]
          */
         private String symbol;
@@ -70,6 +72,10 @@ public class SwapAccountPositionInfoResponse {
         private BigDecimal leverRate;
         @SerializedName("adjust_factor")
         private BigDecimal adjustFactor;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
         private List<Positions> positions;
 
         @Data
@@ -91,6 +97,8 @@ public class SwapAccountPositionInfoResponse {
              * "profit": 3.090618630000000000,
              * "last_price": 289.979379,
              * "margin_asset": "USDT"
+             * "marginAccount":"ETH-USDT",
+             * "marginMode":"isolated"
              */
             private String symbol;
             @SerializedName("contract_code")
@@ -116,6 +124,10 @@ public class SwapAccountPositionInfoResponse {
             private String direction;
             @SerializedName("last_price")
             private BigDecimal lastPrice;
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
         }
     }
 }

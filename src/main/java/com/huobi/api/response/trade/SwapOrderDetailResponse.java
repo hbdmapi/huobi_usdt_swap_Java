@@ -79,6 +79,10 @@ public class SwapOrderDetailResponse {
         private Integer currentPage;
         @SerializedName("total_size")
         private Integer totalSize;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
         private List<TradesBean> trades;
 
         @Data

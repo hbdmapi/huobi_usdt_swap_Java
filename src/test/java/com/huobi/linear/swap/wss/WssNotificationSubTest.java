@@ -25,10 +25,14 @@ public class WssNotificationSubTest {
     @Test
     public void test1() throws URISyntaxException, InterruptedException {
         List<String> channels = Lists.newArrayList();
-        channels.add("orders.BTC-USDT");
+        //channels.add("orders.BTC-USDT");
         channels.add("positions.BTC-USDT");
         channels.add("accounts.BTC-USDT");
-        channels.add("matchOrders.BTC-USDT");
+        //channels.add("matchOrders.BTC-USDT");
+        //channels.add("orders_cross.BTC-USDT");
+        channels.add("positions_cross.BTC-USDT");
+        channels.add("accounts_cross.USDT");
+        //channels.add("matchOrders_cross.BTC-USDT");
         wssNotificationHandle.sub(channels, response -> {
             logger.info("用户收到的数据===============:{}", JSON.toJSON(response));
         });

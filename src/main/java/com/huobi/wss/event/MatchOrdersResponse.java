@@ -40,6 +40,10 @@ public class MatchOrdersResponse {
     private String orderSource;
     @SerializedName("order_price_type")
     private String orderPriceType;
+    @SerializedName("margin_mode")
+    private String marginMode;
+    @SerializedName("margin_account")
+    private String marginAccount;
     private List<TradeBean> trade;
 
     @AllArgsConstructor

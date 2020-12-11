@@ -174,6 +174,9 @@ public class AccountAPIServiceImpl implements AccountAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
+            if (StringUtils.isNotEmpty(request.getContractCode())){
+                params.put("contract_code",request.getContractCode().toUpperCase());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_FINANCIAL_RECORD, params);
             logger.debug("body:{}", body);
             SwapFinancialRecordResponse response = JSON.parseObject(body, SwapFinancialRecordResponse.class);

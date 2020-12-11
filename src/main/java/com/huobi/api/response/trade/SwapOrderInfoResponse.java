@@ -48,7 +48,9 @@ public class SwapOrderInfoResponse {
          * "fee_asset":"USDT",
          * "liquidation_type":"0",
          * "canceled_at":0,
-         * "margin_asset":"USDT"
+         * "margin_asset":"USDT",
+         * "margin_mode":"isolated",
+         * "margin_account":"BTC-USDT"
          */
 
         private String symbol;
@@ -93,7 +95,10 @@ public class SwapOrderInfoResponse {
         private String liquidationType;
         @SerializedName("canceled_at")
         private Long canceledAt;
-
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
 
     }
 }

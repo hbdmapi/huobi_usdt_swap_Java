@@ -70,6 +70,7 @@ public class AccountAPITest implements BaseTest {
     public void getSwapFinancialRecord() {
         SwapFinancialRecordRequest request = SwapFinancialRecordRequest.builder()
                 .marginAccount("btc-usdt")
+                //.contractCode("")
                 //.type("")
                 //.createDate()
                 //.pageIndex()

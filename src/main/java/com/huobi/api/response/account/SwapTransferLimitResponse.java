@@ -26,6 +26,8 @@ public class SwapTransferLimitResponse {
         /**
          * "symbol": "BTC",
          * "contract_code": "BTC-USDT",
+         * "margin_mode":"isolated",
+         * "margin_account":"BTC-USDT"
          * "transfer_in_max_each": 1000000.000000000000000000,
          * "transfer_in_min_each": 2.000000000000000000,
          * "transfer_out_max_each": 2000000.000000000000000000,
@@ -55,6 +57,10 @@ public class SwapTransferLimitResponse {
         private BigDecimal netTransferInMaxDaily;
         @SerializedName("net_transfer_out_max_daily")
         private BigDecimal netTransferOutMaxDaily;
+        @SerializedName("margin_mode")
+        private String marginMode;
+        @SerializedName("margin_account")
+        private String marginAccount;
 
     }
 }
