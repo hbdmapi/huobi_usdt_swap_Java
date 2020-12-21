@@ -137,7 +137,7 @@ public class WssMarketHandle implements Cloneable {
                 public void run() {
 
                     try {
-                        if ((webSocketClient.isClosed() && !webSocketClient.isClosing()) || System.currentTimeMillis() - lastPingTime > 10 * 1000) {
+                        if ((webSocketClient.isClosed() && !webSocketClient.isClosing())) {
                             logger.error("isClosed:{},isClosing:{}，准备重连", webSocketClient.isClosed(), webSocketClient.isClosing());
                             Boolean reconnectResult = webSocketClient.reconnectBlocking();
                             logger.error("重连的结果为：{}", reconnectResult);
