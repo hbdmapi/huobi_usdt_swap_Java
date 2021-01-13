@@ -52,6 +52,8 @@ public class SwapContractInfoResponse {
         private Integer contractStatus;
         @SerializedName("support_margin_mode")
         private String supportMarginMode;
+        @SerializedName("delivery_time")
+        private Long deliveryTime;
 
     }
 }

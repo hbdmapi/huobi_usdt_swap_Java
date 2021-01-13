@@ -35,6 +35,17 @@ public interface TradeAPIService {
 
     SwapTriggerHisordersResponse swapTriggerHisordersResponse(SwapTriggerHisordersRequest request);//获取计划委托历史委托
 
-    SwapSwitchLeverRateResponse getSwapSwitchLeverRate(String contractCode,Integer lever_rate);//查询用户可用杠杆倍数
+    SwapSwitchLeverRateResponse getSwapSwitchLeverRate(String contractCode,Integer lever_rate);//切换杠杆
 
+    SwapTpslOrderResponse swapTpslOrderResponse(SwapTpslOrderRequest request);
+
+    SwapTpslCancelResponse swapTpslCancelResponse(SwapTpslCancelRequest request);
+
+    SwapTpslCancelallResponse swapTpslCancelallResponse(SwapTpslCancelallRequest request);
+
+    SwapTpslOpenordersResponse swapTpslOpenordersResponse(SwapTpslOpenordersRequest request);
+
+    SwapTpslHisordersResponse swapTpslHisordersResponse(SwapTpslHisordersRequset request);
+
+    SwapRelationTpslOrderResponse swapRelationTpslOrderResponse(SwapRelationTpslOrderRequest request);
 }

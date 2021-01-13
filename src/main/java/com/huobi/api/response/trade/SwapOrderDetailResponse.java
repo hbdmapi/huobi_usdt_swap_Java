@@ -83,6 +83,8 @@ public class SwapOrderDetailResponse {
         private String marginMode;
         @SerializedName("margin_account")
         private String marginAccount;
+        @SerializedName("is_tpsl")
+        private Integer isTpsl;
         private List<TradesBean> trades;
 
         @Data

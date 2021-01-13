@@ -39,6 +39,12 @@ public class HuobiLinearSwapCrossAPIConstants {
     public static final String SWAP_CROSS_TRIGGER_HISORDERS = "/linear-swap-api/v1/swap_cross_trigger_hisorders";//15、获取计划委托历史委托(全仓模式)
 
     public static final String SWAP_CROSS_SWITCH_LEVER_RATE = "/linear-swap-api/v1/swap_cross_switch_lever_rate";//16、切换杠杆(全仓模式)
+    public static final String SWAP_CROSS_TPSL_ORDER = "/linear-swap-api/v1/swap_cross_tpsl_order";//对仓位设置止盈止损订单
+    public static final String SWAP_CROSS_TPSL_CANCEL = "/linear-swap-api/v1/swap_cross_tpsl_cancel";//止盈止损订单撤单
+    public static final String SWAP_CROSS_TPSL_CANCELALL = "/linear-swap-api/v1/swap_cross_tpsl_cancelall";//止盈止损订单全部撤单
+    public static final String SWAP_CROSS_TPSL_OPENORDERS = "/linear-swap-api/v1/swap_cross_tpsl_openorders";//查询止盈止损订单当前委托
 
+    public static final String SWAP_CROSS_TPSL_HISORDERS = "/linear-swap-api/v1/swap_cross_tpsl_hisorders";//查询止盈止损订单历史委托
+    public static final String SWAP_CROSS_RELATION_TPSL_ORDER = "/linear-swap-api/v1/swap_cross_relation_tpsl_order";//查询开仓单关联的止盈止损订单详情
 
 }

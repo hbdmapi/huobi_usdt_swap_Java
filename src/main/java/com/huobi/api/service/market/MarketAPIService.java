@@ -49,4 +49,6 @@ public interface MarketAPIService {
     LinearSwapEstimatedRateKlineResponse getLinearSwapEstimatedRateKline(String contractCode,String period,Integer size);
 
     LinearSwapBasisResponse getLinearSwapBasis(LinearSwapBasisRequest request);
+
+    SwapEstimatedSettlementPriceResponse getSwapEstimatedSettlementPrice(String contractCode);
 }

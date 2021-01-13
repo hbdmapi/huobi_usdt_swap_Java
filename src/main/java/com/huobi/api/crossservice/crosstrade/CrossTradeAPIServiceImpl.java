@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.huobi.api.crossrequest.trade.*;
 import com.huobi.api.crossresponse.trade.*;
 import com.huobi.api.exception.ApiException;
+import com.huobi.api.request.trade.*;
+import com.huobi.api.response.trade.*;
 import com.huobi.api.swapcross.HuobiLinearSwapCrossAPIConstants;
 import com.huobi.api.util.HbdmHttpClient;
 import org.apache.commons.lang3.StringUtils;
@@ -258,6 +260,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (request.getContractCode() != null) {
                 params.put("page_index", request.getPageIndex());
             }
+            if (request.getSortBy()!=null){
+                params.put("sort_by",request.getSortBy());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_HISORDERS, params);
             logger.debug("body:{}", body);
             SwapCrossHisordersResponse response = JSON.parseObject(body, SwapCrossHisordersResponse.class);
@@ -434,6 +439,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
+            if (request.getSortBy()!=null){
+                params.put("sort_by",request.getSortBy());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRIGGER_HISORDERS, params);
             logger.debug("body:{}", body);
             SwapCrossTriggerHisordersResponse response = JSON.parseObject(body, SwapCrossTriggerHisordersResponse.class);
@@ -464,5 +472,153 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public SwapTpslOrderResponse swapCrossTpslOrderResponse(SwapTpslOrderRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",request.getContractCode().toUpperCase());
+            params.put("direction",request.getDirection());
+            params.put("volume",request.getVolume());
+            if (request.getTpTriggerPrice()!=null){
+                params.put("tp_trigger_price",request.getTpTriggerPrice());
+            }
+            if (request.getTpOrderPrice()!=null){
+                params.put("tp_order_price",request.getTpOrderPrice());
+            }
+            if (request.getTpOrderPriceType()!=null){
+                params.put("tp_order_price_type",request.getTpOrderPriceType());
+            }
+            if (request.getSlTriggerPrice()!=null){
+                params.put("sl_trigger_price",request.getSlTriggerPrice());
+            }
+            if (request.getSlOrderPrice()!=null){
+                params.put("sl_order_price",request.getSlOrderPrice());
+            }
+            if (request.getSlOrderPriceType()!=null){
+                params.put("sl_order_price_type",request.getSlOrderPriceType());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_ORDER, params);
+            logger.debug("body:{}", body);
+            SwapTpslOrderResponse response = JSON.parseObject(body, SwapTpslOrderResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTpslCancelResponse swapCrossTpslCancelResponse(SwapTpslCancelRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",request.getContractCode().toUpperCase());
+            params.put("order_id",request.getOrderId());
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_CANCEL, params);
+            logger.debug("body:{}", body);
+            SwapTpslCancelResponse response = JSON.parseObject(body, SwapTpslCancelResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTpslCancelallResponse swapCrossTpslCancelallResponse(SwapTpslCancelallRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",request.getContractCode().toUpperCase());
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_CANCELALL, params);
+            logger.debug("body:{}", body);
+            SwapTpslCancelallResponse response = JSON.parseObject(body, SwapTpslCancelallResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTpslOpenordersResponse swapCrossTpslOpenordersResponse(SwapTpslOpenordersRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",request.getContractCode().toUpperCase());
+            if (request.getPageIndex()!=null){
+                params.put("page_index",request.getPageIndex());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_OPENORDERS, params);
+            logger.debug("body:{}", body);
+            SwapTpslOpenordersResponse response = JSON.parseObject(body, SwapTpslOpenordersResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTpslHisordersResponse swapCrossTpslHisordersResponse(SwapTpslHisordersRequset request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",request.getContractCode().toUpperCase());
+            params.put("status",request.getStatus());
+            params.put("create_date",request.getCreateDate());
+            if (request.getPageIndex()!=null){
+                params.put("page_index",request.getPageIndex());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            if (StringUtils.isNotEmpty(request.getSortBy())){
+                params.put("sort_by",request.getSortBy());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_HISORDERS, params);
+            logger.debug("body:{}", body);
+            SwapTpslHisordersResponse response = JSON.parseObject(body, SwapTpslHisordersResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapRelationTpslOrderResponse swapCrossRelationTpslOrderResponse(SwapRelationTpslOrderRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code",request.getContractCode().toUpperCase());
+            params.put("order_id",request.getOrderId());
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_RELATION_TPSL_ORDER, params);
+            logger.debug("body:{}", body);
+            SwapRelationTpslOrderResponse response = JSON.parseObject(body, SwapRelationTpslOrderResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
 
 }

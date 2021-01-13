@@ -485,4 +485,23 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public SwapEstimatedSettlementPriceResponse getSwapEstimatedSettlementPrice(String contractCode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNoneEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.SWAP_ESTIMATED_SETTLEMENT_PRICE, params);
+            logger.debug("body:{}", body);
+            SwapEstimatedSettlementPriceResponse response = JSON.parseObject(body, SwapEstimatedSettlementPriceResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 }

@@ -76,6 +76,8 @@ public class SwapCrossOpenordersResponse {
             private String marginMode;
             @SerializedName("margin_frozen")
             private String marginAccount;
+            @SerializedName("is_tpsl")
+            private Integer isTpsl;
 
         }
     }

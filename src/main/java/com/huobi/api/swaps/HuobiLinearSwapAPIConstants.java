@@ -29,7 +29,7 @@ public class HuobiLinearSwapAPIConstants {
 
     public static final String LINEAR_SWAP_PREMIUM_INDEX_KLINE = "/index/market/history/linear_swap_premium_index_kline ";  // 21.获取溢价指数K线数据
     public static final String LINEAR_SWAP_ESTIMATED_RATE_KLINE = "/index/market/history/linear_swap_estimated_rate_kline";  // 22.获取预测资金费率的K线数据
-
+    public static final String SWAP_ESTIMATED_SETTLEMENT_PRICE = "/linear-swap-api/v1/swap_estimated_settlement_price"; // 23.获取预估结算价
 
     //合约资产接口
     public static final String SWAP_ACCOUNT_INFO = "/linear-swap-api/v1/swap_account_info"; // 1.获取用户账户信息
@@ -72,6 +72,13 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_TRIGGER_HISORDERS = "/linear-swap-api/v1/swap_trigger_hisorders";////获取计划委托历史委托
 
     public static final String SWAP_SWITCH_LEVER_RATE = "/linear-swap-api/v1/swap_switch_lever_rate";// 切换杠杆
+    public static final String SWAP_TPSL_ORDER = "/linear-swap-api/v1/swap_tpsl_order";//对仓位设置止盈止损订单
+    public static final String SWAP_TPSL_CANCEL = "/linear-swap-api/v1/swap_tpsl_cancel";//止盈止损订单撤单
+    public static final String SWAP_TPSL_CANCELALL = "/linear-swap-api/v1/swap_tpsl_cancelall";//止盈止损订单全部撤单
+    public static final String SWAP_TPSL_OPENORDERS = "/linear-swap-api/v1/swap_tpsl_openorders";//查询止盈止损订单当前委托
+
+    public static final String SWAP_TPSL_HISORDERS = "/linear-swap-api/v1/swap_tpsl_hisorders";//查询止盈止损订单历史委托
+    public static final String SWAP_RELATION_TPSL_ORDER = "/linear-swap-api/v1/swap_relation_tpsl_order";//查询开仓单关联的止盈止损订单详情
 
     //合约划转接口
     public static final String USDT_SWAP_TRANSFER = "/v2/account/transfer"; // 1.现货-USDT永续账户间进行资金的划转

@@ -15,5 +15,5 @@ public class SwapCrossTriggerHisordersRequest {
     private Integer createDate;//可随意输入正整数，如果参数超过90则默认查询90天的数据
     private Integer pageIndex;//第几页，不填默认第一页
     private Integer pageSize;//不填默认20，不得多于50
-
+    private String sortBy;
 }

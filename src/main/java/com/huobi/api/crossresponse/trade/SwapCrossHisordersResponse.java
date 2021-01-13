@@ -73,6 +73,10 @@ public class SwapCrossHisordersResponse {
             private String marginMode;
             @SerializedName("margin_frozen")
             private String marginAccount;
+            @SerializedName("update_time")
+            private Long updateTime;
+            @SerializedName("is_tpsl")
+            private Integer isTpsl;
 
         }
     }

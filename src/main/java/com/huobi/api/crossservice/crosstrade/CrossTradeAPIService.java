@@ -2,6 +2,8 @@ package com.huobi.api.crossservice.crosstrade;
 
 import com.huobi.api.crossrequest.trade.*;
 import com.huobi.api.crossresponse.trade.*;
+import com.huobi.api.request.trade.*;
+import com.huobi.api.response.trade.*;
 
 public interface CrossTradeAPIService {
     SwapCrossOrderResponse swapCrossOrderRequest(SwapCrossOrderRequest request);//合约下单（全仓模式）
@@ -36,4 +38,16 @@ public interface CrossTradeAPIService {
     SwapCrossTriggerHisordersResponse swapCrossTriggerHisordersResponse(SwapCrossTriggerHisordersRequest request);//获取计划委托历史委托（全仓模式）
 
     SwapCrossSwitchLeverRateResponse getSwapCrossSwitchLeverRate(String contractCode, Integer lever_rate);//切换杠杆（全仓模式）
+
+    SwapTpslOrderResponse swapCrossTpslOrderResponse(SwapTpslOrderRequest request);
+
+    SwapTpslCancelResponse swapCrossTpslCancelResponse(SwapTpslCancelRequest request);
+
+    SwapTpslCancelallResponse swapCrossTpslCancelallResponse(SwapTpslCancelallRequest request);
+
+    SwapTpslOpenordersResponse swapCrossTpslOpenordersResponse(SwapTpslOpenordersRequest request);
+
+    SwapTpslHisordersResponse swapCrossTpslHisordersResponse(SwapTpslHisordersRequset request);
+
+    SwapRelationTpslOrderResponse swapCrossRelationTpslOrderResponse(SwapRelationTpslOrderRequest request);
 }

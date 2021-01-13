@@ -117,6 +117,8 @@ public class SwapTriggerHisordersResponse {
             private String marginMode;
             @SerializedName("margin_account")
             private String marginAccount;
+            @SerializedName("update_time")
+            private Long updateTime;
         }
     }
 }
