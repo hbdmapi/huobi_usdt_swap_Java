@@ -23,13 +23,19 @@ public class TradeAPITest implements BaseTest {
     @Test
     public void swapOrderRequest() {
         SwapOrderRequest request = SwapOrderRequest.builder()
-                .contractCode("ETH-USDT")
-                .volume(100l)
-                .price(BigDecimal.valueOf(455))
-                .direction(DirectionEnum.SELL)
+                .contractCode("xrp-usdt")
+                .volume(1l)
+                .price(BigDecimal.valueOf(0.2))
+                .direction(DirectionEnum.BUY)
                 .offset(OffsetEnum.OPEN)
-                .leverRate(5)
-                .orderPriceType("limit")
+                .leverRate(10)
+                .orderPriceType("post_only")
+                .tpTriggerPrice(BigDecimal.valueOf(0.5))
+                .tpOrderPrice(BigDecimal.valueOf(0.5))
+                .tpOrderPriceType("limit")
+                .slTriggerPrice(BigDecimal.valueOf(0.1))
+                .slOrderPrice(BigDecimal.valueOf(0.1))
+                .slOrderPriceType("limit")
                 .build();
         SwapOrderResponse response =
                 huobiAPIService.swapOrderRequest(request);

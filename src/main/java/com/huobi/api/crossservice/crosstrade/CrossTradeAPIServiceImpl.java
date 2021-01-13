@@ -50,6 +50,24 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
+            if (request.getTpTriggerPrice()!=null){
+                params.put("tp_trigger_price",request.getTpTriggerPrice());
+            }
+            if (request.getTpOrderPrice()!=null){
+                params.put("tp_order_price",request.getTpOrderPrice());
+            }
+            if (request.getTpOrderPriceType()!=null){
+                params.put("tp_order_price_type",request.getTpOrderPriceType());
+            }
+            if (request.getSlTriggerPrice()!=null){
+                params.put("sl_trigger_price",request.getSlTriggerPrice());
+            }
+            if (request.getSlOrderPrice()!=null){
+                params.put("sl_order_price",request.getSlOrderPrice());
+            }
+            if (request.getSlOrderPriceType()!=null){
+                params.put("sl_order_price_type",request.getSlOrderPriceType());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_ORDER, params);
             logger.debug("body:{}", body);
             SwapCrossOrderResponse response = JSON.parseObject(body, SwapCrossOrderResponse.class);
@@ -84,6 +102,24 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
                         }
                         if (e.getClientOrderId() != null) {
                             params.put("client_order_id", e.getClientOrderId());
+                        }
+                        if (e.getTpTriggerPrice()!=null){
+                            params.put("tp_trigger_price",e.getTpTriggerPrice());
+                        }
+                        if (e.getTpOrderPrice()!=null){
+                            params.put("tp_order_price",e.getTpOrderPrice());
+                        }
+                        if (e.getTpOrderPriceType()!=null){
+                            params.put("tp_order_price_type",e.getTpOrderPriceType());
+                        }
+                        if (e.getSlTriggerPrice()!=null){
+                            params.put("sl_trigger_price",e.getSlTriggerPrice());
+                        }
+                        if (e.getSlOrderPrice()!=null){
+                            params.put("sl_order_price",e.getSlOrderPrice());
+                        }
+                        if (e.getSlOrderPriceType()!=null){
+                            params.put("sl_order_price_type",e.getSlOrderPriceType());
                         }
 
                         listMap.add(params);
