@@ -1,48 +1,51 @@
-package com.huobi.api.crossresponse.trade;
+package com.huobi.api.response.trade;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Builder
 @Data
 @AllArgsConstructor
-public class SwapCrossMatchresultsResponse {
-
-    private DataBean data;
+public class SwapMatchresultsExactResponse {
     private String status;
     private Long ts;
+    private List<DataBean> data;
 
+    @Builder
     @Data
     @AllArgsConstructor
-    public static class DataBean {
-
-        @SerializedName("current_page")
-        private Integer currentPage;
-        @SerializedName("total_page")
-        private Integer totalPage;
-        @SerializedName("total_size")
-        private Integer totalSize;
+    public static class DataBean{
+        @SerializedName("remain_size")
+        private Integer remainSize;
+        @SerializedName("next_id")
+        private Long nextId;
         private List<TradesBean> trades;
 
+        @Builder
         @Data
         @AllArgsConstructor
-        public static class TradesBean {
-
+        public static class TradesBean{
+            private String id;
+            @SerializedName("query_id")
+            private Long queryId;
             @SerializedName("match_id")
             private Long matchId;
-            private String id;
             @SerializedName("order_id")
             private Long orderId;
             @SerializedName("order_id_str")
-            private Long orderIdStr;
+            private String orderIdStr;
             private String symbol;
-            @SerializedName("order_source")
-            private String orderSource;
             @SerializedName("contract_code")
             private String contractCode;
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
             private String direction;
             private String offset;
             @SerializedName("trade_volume")
@@ -55,18 +58,15 @@ public class SwapCrossMatchresultsResponse {
             private Long createDate;
             @SerializedName("offset_profitloss")
             private BigDecimal offsetProfitloss;
-            @SerializedName("trade_fee")
-            private double tradeFee;
-            @SerializedName("fee_asset")
-            private String feeAsset;
-            private String role;
-            @SerializedName("margin_mode")
-            private String marginMode;
-            @SerializedName("margin_frozen")
-            private String marginAccount;
             @SerializedName("real_profit")
             private BigDecimal realProfit;
-
+            @SerializedName("trade_fee")
+            private BigDecimal tradeFee;
+            private String role;
+            @SerializedName("fee_asset")
+            private String feeAsset;
+            @SerializedName("order_source")
+            private String orderSource;
         }
     }
 }

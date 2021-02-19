@@ -35,7 +35,7 @@ public interface TradeAPIService {
 
     SwapTriggerHisordersResponse swapTriggerHisordersResponse(SwapTriggerHisordersRequest request);//获取计划委托历史委托
 
-    SwapSwitchLeverRateResponse getSwapSwitchLeverRate(String contractCode,Integer lever_rate);//切换杠杆
+    SwapSwitchLeverRateResponse getSwapSwitchLeverRate(String contractCode, Integer lever_rate);//切换杠杆
 
     SwapTpslOrderResponse swapTpslOrderResponse(SwapTpslOrderRequest request);
 
@@ -48,4 +48,8 @@ public interface TradeAPIService {
     SwapTpslHisordersResponse swapTpslHisordersResponse(SwapTpslHisordersRequset request);
 
     SwapRelationTpslOrderResponse swapRelationTpslOrderResponse(SwapRelationTpslOrderRequest request);
+
+    SwapHisordersExactResponse swapHisordersExactResponse(SwapHisordersExactRequest request);
+
+    SwapMatchresultsExactResponse swapMatchresultsExactResponse(SwapMatchresultsExactRequest request);
 }

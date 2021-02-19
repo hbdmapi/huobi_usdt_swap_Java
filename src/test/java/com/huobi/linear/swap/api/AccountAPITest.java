@@ -1,9 +1,7 @@
 package com.huobi.linear.swap.api;
 
 import com.alibaba.fastjson.JSON;
-import com.huobi.api.request.account.SwapFinancialRecordRequest;
-import com.huobi.api.request.account.SwapMasterSubTransferRecordRequest;
-import com.huobi.api.request.account.SwapMasterSubTransferRequest;
+import com.huobi.api.request.account.*;
 import com.huobi.api.response.account.*;
 import com.huobi.api.service.account.AccountAPIServiceImpl;
 import org.junit.FixMethodOrder;
@@ -158,9 +156,49 @@ public class AccountAPITest implements BaseTest {
     }
 
     @Test
-    public void getSwapAvailableLevelRateResponse(){
-        SwapAvailableLevelRateResponse response=huobiAPIService.getSwapAvailableLevelRate("");
+    public void getSwapAvailableLevelRateResponse() {
+        SwapAvailableLevelRateResponse response = huobiAPIService.getSwapAvailableLevelRate("");
         logger.debug("16.查询用户可用杠杆倍数：{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void getSwapUserSettlementRecords() {
+        SwapUserSettlementRecordsRequest request = SwapUserSettlementRecordsRequest.builder()
+                .contractCode("BTC-USDT")
+                //.startTime(1l)
+                //.endTime(1l)
+                //.pageIndex(1)
+                //.pageSize(1)
+                .build();
+        SwapUserSettlementRecordsResponse response = huobiAPIService.getSwapUserSettlementRecords(request);
+        logger.debug("17.查询用户结算记录：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getSwapFinancialRecordExact() {
+        SwapFinancialRecordExactRequest request = SwapFinancialRecordExactRequest.builder()
+                .marginAccount("usdt")
+                //.contractCode("btc-usdt")
+                .type("3,4,5")
+                //.startTime(1l)
+                //.endTime(1l)
+                //.fromId(1l)
+                //.size(20)
+                //.direct("")
+                .build();
+        SwapFinancialRecordExactResponse response = huobiAPIService.getSwapFinancialRecordExact(request);
+        logger.debug("18.组合查询用户财务记录：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getSwapSubAuth() {
+        SwapSubAuthResponse response = huobiAPIService.getSwapSubAuth("123,12345", 1);
+        logger.debug("19.批量设置子账户交易权限：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getSwapSubAccountInfoList() {
+        SwapSubAccountInfoListResponse response = huobiAPIService.getSwapSubAccountInfoList("xrp-usdt", 1, 20);
+        logger.debug("20.批量获取子账户资产信息：{}", JSON.toJSONString(response));
+    }
 }

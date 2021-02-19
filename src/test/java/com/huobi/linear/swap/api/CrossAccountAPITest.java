@@ -1,8 +1,10 @@
 package com.huobi.linear.swap.api;
 
 import com.alibaba.fastjson.JSON;
+import com.huobi.api.crossrequest.trade.SwapCrossUserSettlementRecordsRequest;
 import com.huobi.api.crossresponse.account.*;
 import com.huobi.api.crossservice.crossaccount.CrossAccountAPIServiceImpl;
+import com.huobi.api.response.account.SwapSubAccountInfoListResponse;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -77,10 +79,27 @@ public class CrossAccountAPITest implements BaseTest {
     }
 
     @Test
-    public void getSwapCrossAvailableLevelRateResponse(){
-        SwapCrossAvailableLevelRateResponse response=huobiCrossAPIService.getSwapCrossAvailableLevelRate("");
+    public void getSwapCrossAvailableLevelRateResponse() {
+        SwapCrossAvailableLevelRateResponse response = huobiCrossAPIService.getSwapCrossAvailableLevelRate("");
         logger.debug("9.查询用户可用杠杆倍数：{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void getSwapCrossUserSettlementRecords() {
+        SwapCrossUserSettlementRecordsRequest request = SwapCrossUserSettlementRecordsRequest.builder()
+                .marginAccount("usdt")
+                //.startTime(1l)
+                //.endTime(1l)
+                //.pageSize(0)
+                //.pageSize(0)
+                .build();
+        SwapCrossUserSettlementRecordsResponse response = huobiCrossAPIService.getSwapCrossUserSettlementRecords(request);
+        logger.debug("10.查询用户结算记录：{}", JSON.toJSONString(response));
+    }
 
+    @Test
+    public void getSwapCrossSubCrossAccountInfoList() {
+        SwapSubAccountInfoListResponse response = huobiCrossAPIService.getSwapCrossSubAccountInfoList("usdt", 1, 20);
+        logger.debug("11.批量获取子账户资产信息：{}", JSON.toJSONString(response));
+    }
 }

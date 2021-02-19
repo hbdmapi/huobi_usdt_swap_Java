@@ -6,6 +6,7 @@ public class HuobiLinearSwapCrossAPIConstants {
     public static final String SWAP_CROSS_ADJUSTFACTOR = "/linear-swap-api/v1/swap_cross_adjustfactor";  // 1.(全仓模式)
     public static final String SWAP_CROSS_TRANSFER_STATE = "/linear-swap-api/v1/swap_cross_transfer_state";  // 2.(全仓模式)
     public static final String SWAP_CROSS_TRADE_STATE = "/linear-swap-api/v1/swap_cross_trade_state";  // 3.(全仓模式)
+    public static final String SWAP_CROSS_LADDER_MARGIN = "/linear-swap-api/v1/swap_cross_ladder_margin";  // 4.(全仓模式)
 
     //合约资产接口
     public static final String SWAP_CROSS_ACCOUNT_INFO = "/linear-swap-api/v1/swap_cross_account_info"; // 1.获取用户账户信息(全仓模式)
@@ -18,6 +19,9 @@ public class HuobiLinearSwapCrossAPIConstants {
     public static final String SWAP_CROSS_AVAILABLE_LEVEL_RATE = "/linear-swap-api/v1/swap_cross_available_level_rate";//7.查询用户可用杠杆倍数(全仓模式)
     public static final String SWAP_CROSS_TRANSFER_LIMIT = "/linear-swap-api/v1/swap_cross_transfer_limit"; // 8.查询用户当前的划转限制(全仓模式)
     public static final String SWAP_CROSS_POSITION_LIMIT = "/linear-swap-api/v1/swap_cross_position_limit"; // 9.用户持仓量限制的查询(全仓模式)
+    public static final String SWAP_CROSS_USER_SETTLEMENT_RECORDS = "/linear-swap-api/v1/swap_cross_user_settlement_records";  // 10.查询用户结算记录(全仓模式)
+
+    public static final String SWAP_CROSS_SUB_ACCOUNT_INFO_LIST = "/linear-swap-api/v1/swap_cross_sub_account_info_list";  // 11.批量获取子账户资产信息(全仓模式)
 
     //合约交易接口
     public static final String SWAP_CROSS_ORDER = "/linear-swap-api/v1/swap_cross_order"; // 1.合约下单(全仓模式)
@@ -46,5 +50,7 @@ public class HuobiLinearSwapCrossAPIConstants {
 
     public static final String SWAP_CROSS_TPSL_HISORDERS = "/linear-swap-api/v1/swap_cross_tpsl_hisorders";//查询止盈止损订单历史委托
     public static final String SWAP_CROSS_RELATION_TPSL_ORDER = "/linear-swap-api/v1/swap_cross_relation_tpsl_order";//查询开仓单关联的止盈止损订单详情
+    public static final String SWAP_CROSS_HISORDERS_EXACT = "/linear-swap-api/v1/swap_cross_hisorders_exact";  // 组合查询合约历史委托(全仓模式)
+    public static final String SWAP_CROSS_MATCHRESULTS_EXACT = "/linear-swap-api/v1/swap_cross_matchresults_exact";  // 组合查询用户历史成交记录(全仓模式)
 
 }

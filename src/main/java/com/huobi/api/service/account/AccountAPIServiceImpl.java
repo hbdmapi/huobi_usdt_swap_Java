@@ -1,11 +1,9 @@
 package com.huobi.api.service.account;
 
 import com.alibaba.fastjson.JSON;
+import com.huobi.api.request.account.*;
 import com.huobi.api.swaps.HuobiLinearSwapAPIConstants;
 import com.huobi.api.exception.ApiException;
-import com.huobi.api.request.account.SwapFinancialRecordRequest;
-import com.huobi.api.request.account.SwapMasterSubTransferRecordRequest;
-import com.huobi.api.request.account.SwapMasterSubTransferRequest;
 import com.huobi.api.response.account.*;
 import com.huobi.api.util.HbdmHttpClient;
 import org.apache.commons.lang3.StringUtils;
@@ -174,8 +172,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
-            if (StringUtils.isNotEmpty(request.getContractCode())){
-                params.put("contract_code",request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_FINANCIAL_RECORD, params);
             logger.debug("body:{}", body);
@@ -378,6 +376,115 @@ public class AccountAPIServiceImpl implements AccountAPIService {
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_AVAILABLE_LEVEL_RATE, params);
             logger.debug("body:{}", body);
             SwapAvailableLevelRateResponse response = JSON.parseObject(body, SwapAvailableLevelRateResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapUserSettlementRecordsResponse getSwapUserSettlementRecords(SwapUserSettlementRecordsRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (request.getStartTime() != null) {
+                params.put("start_time", request.getStartTime());
+            }
+            if (request.getEndTime() != null) {
+                params.put("end_time", request.getEndTime());
+            }
+            if (request.getPageIndex() != null) {
+                params.put("page_index", request.getPageIndex());
+            }
+            if (request.getPageSize() != null) {
+                params.put("page_size", request.getPageSize());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_USER_SETTLEMENT_RECORDS, params);
+            logger.debug("body:{}", body);
+            SwapUserSettlementRecordsResponse response = JSON.parseObject(body, SwapUserSettlementRecordsResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapFinancialRecordExactResponse getSwapFinancialRecordExact(SwapFinancialRecordExactRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("margin_account", request.getMarginAccount());
+            if (request.getContractCode() != null) {
+                params.put("contract_code", request.getContractCode());
+            }
+            if (request.getType() != null) {
+                params.put("type", request.getType());
+            }
+            if (request.getStartTime() != null) {
+                params.put("start_time", request.getStartTime());
+            }
+            if (request.getEndTime() != null) {
+                params.put("end_time", request.getEndTime());
+            }
+            if (request.getSize() != null) {
+                params.put("size", request.getSize());
+            }
+            if (request.getDirect() != null) {
+                params.put("direct", request.getDirect());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_FINANCIAL_RECORD_EXACT, params);
+            logger.debug("body:{}", body);
+            SwapFinancialRecordExactResponse response = JSON.parseObject(body, SwapFinancialRecordExactResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapSubAuthResponse getSwapSubAuth(String subUid, Integer subAuth) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("sub_uid", subUid);
+            params.put("sub_auth", subAuth);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_SUB_AUTH, params);
+            logger.debug("body:{}", body);
+            SwapSubAuthResponse response = JSON.parseObject(body, SwapSubAuthResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapSubAccountInfoListResponse getSwapSubAccountInfoList(String contractCode, Integer pageIndex, Integer pageSize) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", contractCode);
+            if (pageIndex != null) {
+                params.put("page_index", pageIndex);
+            }
+            if (pageSize != null) {
+                params.put("page_size", pageSize);
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_SUB_ACCOUNT_INFO_LIST, params);
+            logger.debug("body:{}", body);
+            SwapSubAccountInfoListResponse response = JSON.parseObject(body, SwapSubAccountInfoListResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
                 return response;
             }

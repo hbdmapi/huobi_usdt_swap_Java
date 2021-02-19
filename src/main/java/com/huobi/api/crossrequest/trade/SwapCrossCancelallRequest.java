@@ -10,5 +10,6 @@ import lombok.Data;
 @Builder
 public class SwapCrossCancelallRequest {
     private String contractCode;//合约代码	"BTC-USDT"
-
+    private String direction;
+    private String offset;
 }

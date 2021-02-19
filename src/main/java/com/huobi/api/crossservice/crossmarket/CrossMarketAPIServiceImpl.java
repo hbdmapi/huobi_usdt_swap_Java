@@ -5,6 +5,7 @@ import com.huobi.api.crossresponse.market.SwapCrossAdjustfactorResponse;
 import com.huobi.api.crossresponse.market.SwapCrossTradeStateResponse;
 import com.huobi.api.crossresponse.market.SwapCrossTransferStateResponse;
 import com.huobi.api.exception.ApiException;
+import com.huobi.api.response.market.SwapLadderMarginResponse;
 import com.huobi.api.swapcross.HuobiLinearSwapCrossAPIConstants;
 import com.huobi.api.util.HbdmHttpClient;
 import org.apache.commons.lang3.StringUtils;
@@ -70,6 +71,26 @@ public class CrossMarketAPIServiceImpl implements CrossMarketAPIService {
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRADE_STATE, params);
             logger.debug("body:{}", body);
             SwapCrossTradeStateResponse response = JSON.parseObject(body, SwapCrossTradeStateResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapLadderMarginResponse getSwapCrossLadderMargin(String contractCode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNoneEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_LADDER_MARGIN, params);
+            logger.debug("body:{}", body);
+            SwapLadderMarginResponse response = JSON.parseObject(body, SwapLadderMarginResponse.class);
             if ("ok".equalsIgnoreCase(response.getStatus())) {
                 return response;
             }

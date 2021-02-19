@@ -119,6 +119,10 @@ public class SwapOpenordersResponse {
             private String marginAccount;
             @SerializedName("is_tpsl")
             private Integer isTpsl;
+            @SerializedName("update_time")
+            private Long updateTime;
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
         }
     }
 }

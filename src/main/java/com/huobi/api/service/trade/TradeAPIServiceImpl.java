@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,23 +49,23 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
-            if (request.getTpTriggerPrice()!=null){
-                params.put("tp_trigger_price",request.getTpTriggerPrice());
+            if (request.getTpTriggerPrice() != null && request.getTpTriggerPrice() != BigDecimal.valueOf(0)) {
+                params.put("tp_trigger_price", request.getTpTriggerPrice());
             }
-            if (request.getTpOrderPrice()!=null){
-                params.put("tp_order_price",request.getTpOrderPrice());
+            if (request.getTpOrderPrice() != null && request.getTpOrderPrice() != BigDecimal.valueOf(0)) {
+                params.put("tp_order_price", request.getTpOrderPrice());
             }
-            if (request.getTpOrderPriceType()!=null){
-                params.put("tp_order_price_type",request.getTpOrderPriceType());
+            if (request.getTpOrderPriceType() != null) {
+                params.put("tp_order_price_type", request.getTpOrderPriceType());
             }
-            if (request.getSlTriggerPrice()!=null){
-                params.put("sl_trigger_price",request.getSlTriggerPrice());
+            if (request.getSlTriggerPrice() != null && request.getSlTriggerPrice() != BigDecimal.valueOf(0)) {
+                params.put("sl_trigger_price", request.getSlTriggerPrice());
             }
-            if (request.getSlOrderPrice()!=null){
-                params.put("sl_order_price",request.getSlOrderPrice());
+            if (request.getSlOrderPrice() != null && request.getSlOrderPrice() != BigDecimal.valueOf(0)) {
+                params.put("sl_order_price", request.getSlOrderPrice());
             }
-            if (request.getSlOrderPriceType()!=null){
-                params.put("sl_order_price_type",request.getSlOrderPriceType());
+            if (request.getSlOrderPriceType() != null) {
+                params.put("sl_order_price_type", request.getSlOrderPriceType());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_ORDER, params);
             logger.debug("body:{}", body);
@@ -101,25 +102,24 @@ public class TradeAPIServiceImpl implements TradeAPIService {
                         if (e.getClientOrderId() != null) {
                             params.put("client_order_id", e.getClientOrderId());
                         }
-                        if (e.getTpTriggerPrice()!=null){
-                            params.put("tp_trigger_price",e.getTpTriggerPrice());
+                        if (e.getTpTriggerPrice() != null && e.getTpTriggerPrice() != BigDecimal.valueOf(0)) {
+                            params.put("tp_trigger_price", e.getTpTriggerPrice());
                         }
-                        if (e.getTpOrderPrice()!=null){
-                            params.put("tp_order_price",e.getTpOrderPrice());
+                        if (e.getTpOrderPrice() != null && e.getTpOrderPrice() != BigDecimal.valueOf(0)) {
+                            params.put("tp_order_price", e.getTpOrderPrice());
                         }
-                        if (e.getTpOrderPriceType()!=null){
-                            params.put("tp_order_price_type",e.getTpOrderPriceType());
+                        if (e.getTpOrderPriceType() != null) {
+                            params.put("tp_order_price_type", e.getTpOrderPriceType());
                         }
-                        if (e.getSlTriggerPrice()!=null){
-                            params.put("sl_trigger_price",e.getSlTriggerPrice());
+                        if (e.getSlTriggerPrice() != null && e.getSlTriggerPrice() != BigDecimal.valueOf(0)) {
+                            params.put("sl_trigger_price", e.getSlTriggerPrice());
                         }
-                        if (e.getSlOrderPrice()!=null){
-                            params.put("sl_order_price",e.getSlOrderPrice());
+                        if (e.getSlOrderPrice() != null && e.getSlOrderPrice() != BigDecimal.valueOf(0)) {
+                            params.put("sl_order_price", e.getSlOrderPrice());
                         }
-                        if (e.getSlOrderPriceType()!=null){
-                            params.put("sl_order_price_type",e.getSlOrderPriceType());
+                        if (e.getSlOrderPriceType() != null) {
+                            params.put("sl_order_price_type", e.getSlOrderPriceType());
                         }
-
                         listMap.add(params);
                     });
             Map<String, Object> params = new HashMap<>();
@@ -177,6 +177,12 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("contract_code", request.getContractCode());
+            if (request.getDirection() != null) {
+                params.put("direction", request.getDirection());
+            }
+            if (request.getOffset() != null) {
+                params.put("offset", request.getOffset());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_CANCELALL, params);
             logger.debug("body:{}", body);
             SwapCancelallResponse response = JSON.parseObject(body, SwapCancelallResponse.class);
@@ -264,6 +270,12 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
+            if (request.getSortBy() != null) {
+                params.put("sort_by", request.getSortBy());
+            }
+            if (request.getTradeType() != null) {
+                params.put("trade_type", request.getTradeType());
+            }
             params.put("contract_code", request.getContractCode().toUpperCase());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_OPENORDERS, params);
             logger.debug("body:{}", body);
@@ -294,8 +306,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getContractCode() != null) {
                 params.put("page_index", request.getPageIndex());
             }
-            if (request.getSortBy()!=null){
-                params.put("sort_by",request.getSortBy());
+            if (request.getSortBy() != null) {
+                params.put("sort_by", request.getSortBy());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_HISORDERS, params);
             logger.debug("body:{}", body);
@@ -421,6 +433,12 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         try {
             Map<String, Object> params = new HashMap<>();
             params.put("contract_code", request.getContractCode());
+            if (request.getDirection() != null) {
+                params.put("direction", request.getDirection());
+            }
+            if (request.getOffset() != null) {
+                params.put("offset", request.getOffset());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_CANCELALL, params);
             logger.debug("body:{}", body);
             SwapTriggerCancelallResponse response = JSON.parseObject(body, SwapTriggerCancelallResponse.class);
@@ -444,6 +462,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
+            }
+            if (request.getTradeType() != null) {
+                params.put("trade_type", request.getTradeType());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_OPENORDERS, params);
             logger.debug("body:{}", body);
@@ -473,8 +494,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
-            if (request.getSortBy()!=null){
-                params.put("sort_by",request.getSortBy());
+            if (request.getSortBy() != null) {
+                params.put("sort_by", request.getSortBy());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_HISORDERS, params);
             logger.debug("body:{}", body);
@@ -493,8 +514,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",contractCode.toUpperCase());
-            params.put("lever_rate",leverRate);
+            params.put("contract_code", contractCode.toUpperCase());
+            params.put("lever_rate", leverRate);
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_SWITCH_LEVER_RATE, params);
             logger.debug("body:{}", body);
             SwapSwitchLeverRateResponse response = JSON.parseObject(body, SwapSwitchLeverRateResponse.class);
@@ -512,8 +533,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",request.getContractCode().toUpperCase());
-            params.put("order_id",request.getOrderId());
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("order_id", request.getOrderId());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_RELATION_TPSL_ORDER, params);
             logger.debug("body:{}", body);
             SwapRelationTpslOrderResponse response = JSON.parseObject(body, SwapRelationTpslOrderResponse.class);
@@ -531,17 +552,17 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",request.getContractCode().toUpperCase());
-            params.put("status",request.getStatus());
-            params.put("create_date",request.getCreateDate());
-            if (request.getPageIndex()!=null){
-                params.put("page_index",request.getPageIndex());
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("status", request.getStatus());
+            params.put("create_date", request.getCreateDate());
+            if (request.getPageIndex() != null) {
+                params.put("page_index", request.getPageIndex());
             }
-            if (request.getPageSize()!=null){
-                params.put("page_size",request.getPageSize());
+            if (request.getPageSize() != null) {
+                params.put("page_size", request.getPageSize());
             }
-            if (StringUtils.isNotEmpty(request.getSortBy())){
-                params.put("sort_by",request.getSortBy());
+            if (StringUtils.isNotEmpty(request.getSortBy())) {
+                params.put("sort_by", request.getSortBy());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TPSL_HISORDERS, params);
             logger.debug("body:{}", body);
@@ -560,12 +581,15 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",request.getContractCode().toUpperCase());
-            if (request.getPageIndex()!=null){
-                params.put("page_index",request.getPageIndex());
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (request.getPageIndex() != null) {
+                params.put("page_index", request.getPageIndex());
             }
-            if (request.getPageSize()!=null){
-                params.put("page_size",request.getPageSize());
+            if (request.getPageSize() != null) {
+                params.put("page_size", request.getPageSize());
+            }
+            if (request.getTradeType() != null) {
+                params.put("trade_type", request.getTradeType());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TPSL_OPENORDERS, params);
             logger.debug("body:{}", body);
@@ -584,7 +608,10 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",request.getContractCode().toUpperCase());
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (request.getDirection() != null) {
+                params.put("direction", request.getDirection());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TPSL_CANCELALL, params);
             logger.debug("body:{}", body);
             SwapTpslCancelallResponse response = JSON.parseObject(body, SwapTpslCancelallResponse.class);
@@ -602,8 +629,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",request.getContractCode().toUpperCase());
-            params.put("order_id",request.getOrderId());
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("order_id", request.getOrderId());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TPSL_CANCEL, params);
             logger.debug("body:{}", body);
             SwapTpslCancelResponse response = JSON.parseObject(body, SwapTpslCancelResponse.class);
@@ -621,26 +648,26 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code",request.getContractCode().toUpperCase());
-            params.put("direction",request.getDirection());
-            params.put("volume",request.getVolume());
-            if (request.getTpTriggerPrice()!=null){
-                params.put("tp_trigger_price",request.getTpTriggerPrice());
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("direction", request.getDirection());
+            params.put("volume", request.getVolume());
+            if (request.getTpTriggerPrice() != null && request.getTpTriggerPrice() != BigDecimal.valueOf(0)) {
+                params.put("tp_trigger_price", request.getTpTriggerPrice());
             }
-            if (request.getTpOrderPrice()!=null){
-                params.put("tp_order_price",request.getTpOrderPrice());
+            if (request.getTpOrderPrice() != null && request.getTpOrderPrice() != BigDecimal.valueOf(0)) {
+                params.put("tp_order_price", request.getTpOrderPrice());
             }
-            if (request.getTpOrderPriceType()!=null){
-                params.put("tp_order_price_type",request.getTpOrderPriceType());
+            if (request.getTpOrderPriceType() != null) {
+                params.put("tp_order_price_type", request.getTpOrderPriceType());
             }
-            if (request.getSlTriggerPrice()!=null){
-                params.put("sl_trigger_price",request.getSlTriggerPrice());
+            if (request.getSlTriggerPrice() != null && request.getSlTriggerPrice() != BigDecimal.valueOf(0)) {
+                params.put("sl_trigger_price", request.getSlTriggerPrice());
             }
-            if (request.getSlOrderPrice()!=null){
-                params.put("sl_order_price",request.getSlOrderPrice());
+            if (request.getSlOrderPrice() != null && request.getSlOrderPrice() != BigDecimal.valueOf(0)) {
+                params.put("sl_order_price", request.getSlOrderPrice());
             }
-            if (request.getSlOrderPriceType()!=null){
-                params.put("sl_order_price_type",request.getSlOrderPriceType());
+            if (request.getSlOrderPriceType() != null) {
+                params.put("sl_order_price_type", request.getSlOrderPriceType());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TPSL_ORDER, params);
             logger.debug("body:{}", body);
@@ -654,5 +681,77 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public SwapHisordersExactResponse swapHisordersExactResponse(SwapHisordersExactRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("trade_type", request.getTradeType());
+            params.put("type", request.getType());
+            params.put("status", request.getStatus());
+            if (request.getOrderPriceType() != null) {
+                params.put("order_price_type", request.getOrderPriceType());
+            }
+            if (request.getStartTime() != null) {
+                params.put("start_time", request.getStartTime());
+            }
+            if (request.getEndTime() != null) {
+                params.put("end_time", request.getEndTime());
+            }
+            if (request.getFromId() != null) {
+                params.put("from_id", request.getFromId());
+            }
+            if (request.getSize() != null) {
+                params.put("size", request.getSize());
+            }
+            if (request.getDirect() != null) {
+                params.put("direct", request.getDirect());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_HISORDERS_EXACT, params);
+            logger.debug("body:{}", body);
+            SwapHisordersExactResponse response = JSON.parseObject(body, SwapHisordersExactResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapMatchresultsExactResponse swapMatchresultsExactResponse(SwapMatchresultsExactRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("trade_type", request.getTradeType());
+            if (request.getStartTime() != null) {
+                params.put("start_time", request.getStartTime());
+            }
+            if (request.getEndTime() != null) {
+                params.put("end_time", request.getEndTime());
+            }
+            if (request.getFromId() != null) {
+                params.put("from_id", request.getFromId());
+            }
+            if (request.getSize() != null) {
+                params.put("size", request.getSize());
+            }
+            if (request.getDirect() != null) {
+                params.put("direct", request.getDirect());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_MATCHRESULTS_EXACT, params);
+            logger.debug("body:{}", body);
+            SwapMatchresultsExactResponse response = JSON.parseObject(body, SwapMatchresultsExactResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 
 }

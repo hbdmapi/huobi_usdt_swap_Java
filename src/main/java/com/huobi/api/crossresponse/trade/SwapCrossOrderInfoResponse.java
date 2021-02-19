@@ -67,6 +67,7 @@ public class SwapCrossOrderInfoResponse {
         private String marginAccount;
         @SerializedName("is_tpsl")
         private Integer isTpsl;
-
+        @SerializedName("real_profit")
+        private BigDecimal realProfit;
     }
 }

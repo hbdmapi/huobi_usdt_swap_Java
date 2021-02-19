@@ -30,6 +30,9 @@ public class HuobiLinearSwapAPIConstants {
     public static final String LINEAR_SWAP_PREMIUM_INDEX_KLINE = "/index/market/history/linear_swap_premium_index_kline ";  // 21.获取溢价指数K线数据
     public static final String LINEAR_SWAP_ESTIMATED_RATE_KLINE = "/index/market/history/linear_swap_estimated_rate_kline";  // 22.获取预测资金费率的K线数据
     public static final String SWAP_ESTIMATED_SETTLEMENT_PRICE = "/linear-swap-api/v1/swap_estimated_settlement_price"; // 23.获取预估结算价
+    public static final String BATCH_MERGED = "/linear-swap-ex/market/detail/batch_merged";  // 24.批量获取聚合行情
+    public static final String LINEAR_SWAP_MARK_PRICE_KLINE = "/index/market/history/linear_swap_mark_price_kline";  // 25.获取标记价格的 K 线数据
+    public static final String SWAP_LADDER_MARGIN = "/linear-swap-api/v1/swap_ladder_margin";  // 26.获取平台阶梯保证金
 
     //合约资产接口
     public static final String SWAP_ACCOUNT_INFO = "/linear-swap-api/v1/swap_account_info"; // 1.获取用户账户信息
@@ -51,6 +54,10 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_API_TRADING_STATUS = "/linear-swap-api/v1/swap_api_trading_status";//15.获取用户API指标禁用信息
 
     public static final String SWAP_AVAILABLE_LEVEL_RATE = "/linear-swap-api/v1/swap_available_level_rate";//16.查询用户可用杠杆倍数
+    public static final String SWAP_SUB_AUTH = "/linear-swap-api/v1/swap_sub_auth"; // 17.批量设置子账户交易权限
+    public static final String SWAP_SUB_ACCOUNT_INFO_LIST = "/linear-swap-api/v1/swap_sub_account_info_list"; // 18.批量获取子账户资产信息
+    public static final String SWAP_USER_SETTLEMENT_RECORDS = "/linear-swap-api/v1/swap_user_settlement_records"; // 19.查询用户结算记录
+    public static final String SWAP_FINANCIAL_RECORD_EXACT = "/linear-swap-api/v1/swap_financial_record_exact"; // 20.组合查询用户财务记录
 
     //合约交易接口
     public static final String SWAP_ORDER = "/linear-swap-api/v1/swap_order"; // 1.合约下单
@@ -79,6 +86,8 @@ public class HuobiLinearSwapAPIConstants {
 
     public static final String SWAP_TPSL_HISORDERS = "/linear-swap-api/v1/swap_tpsl_hisorders";//查询止盈止损订单历史委托
     public static final String SWAP_RELATION_TPSL_ORDER = "/linear-swap-api/v1/swap_relation_tpsl_order";//查询开仓单关联的止盈止损订单详情
+    public static final String SWAP_MATCHRESULTS_EXACT = "/linear-swap-api/v1/swap_matchresults_exact"; // 组合查询用户历史成交记录
+    public static final String SWAP_HISORDERS_EXACT = "/linear-swap-api/v1/swap_hisorders_exact"; // 组合查询合约历史委托
 
     //合约划转接口
     public static final String USDT_SWAP_TRANSFER = "/v2/account/transfer"; // 1.现货-USDT永续账户间进行资金的划转

@@ -78,7 +78,10 @@ public class SwapCrossOpenordersResponse {
             private String marginAccount;
             @SerializedName("is_tpsl")
             private Integer isTpsl;
-
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
+            @SerializedName("update_time")
+            private Long updateTime;
         }
     }
 }

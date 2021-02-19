@@ -114,7 +114,8 @@ public class SwapHisordersResponse {
             private Integer isTpsl;
             @SerializedName("update_time")
             private Long updateTime;
-
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
         }
     }
 }

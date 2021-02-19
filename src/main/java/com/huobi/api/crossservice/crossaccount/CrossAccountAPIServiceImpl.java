@@ -1,8 +1,10 @@
 package com.huobi.api.crossservice.crossaccount;
 
 import com.alibaba.fastjson.JSON;
+import com.huobi.api.crossrequest.trade.SwapCrossUserSettlementRecordsRequest;
 import com.huobi.api.crossresponse.account.*;
 import com.huobi.api.exception.ApiException;
+import com.huobi.api.response.account.SwapSubAccountInfoListResponse;
 import com.huobi.api.swapcross.HuobiLinearSwapCrossAPIConstants;
 import com.huobi.api.util.HbdmHttpClient;
 import org.apache.commons.lang3.StringUtils;
@@ -200,8 +202,8 @@ public class CrossAccountAPIServiceImpl implements CrossAccountAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            if(StringUtils.isNoneEmpty(contractCode)){
-                params.put("contract_code",contractCode.toUpperCase());
+            if (StringUtils.isNoneEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_AVAILABLE_LEVEL_RATE, params);
             logger.debug("body:{}", body);
@@ -215,6 +217,54 @@ public class CrossAccountAPIServiceImpl implements CrossAccountAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public SwapCrossUserSettlementRecordsResponse getSwapCrossUserSettlementRecords(SwapCrossUserSettlementRecordsRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("margin_account", request.getMarginAccount().toUpperCase());
+            if (request.getStartTime() != null) {
+                params.put("start_time", request.getStartTime());
+            }
+            if (request.getEndTime() != null) {
+                params.put("end_time", request.getEndTime());
+            }
+            if (request.getPageIndex() != null) {
+                params.put("page_index", request.getPageIndex());
+            }
+            if (request.getPageSize() != null) {
+                params.put("page_size", request.getPageSize());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_USER_SETTLEMENT_RECORDS, params);
+            logger.debug("body:{}", body);
+            SwapCrossUserSettlementRecordsResponse response = JSON.parseObject(body, SwapCrossUserSettlementRecordsResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 
+    @Override
+    public SwapSubAccountInfoListResponse getSwapCrossSubAccountInfoList(String marginAccount, Integer pageIndex, Integer pagesize) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("margin_account", marginAccount);
+            params.put("page_index", pageIndex);
+            params.put("page_size", pagesize);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_SUB_ACCOUNT_INFO_LIST, params);
+            logger.debug("body:{}", body);
+            SwapSubAccountInfoListResponse response = JSON.parseObject(body, SwapSubAccountInfoListResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 
 }

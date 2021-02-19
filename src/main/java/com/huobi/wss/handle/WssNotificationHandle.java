@@ -33,12 +33,15 @@ public class WssNotificationHandle {
     private WebSocketClient webSocketClient;
     private String accessKey;
     private String secretKey;
+    private String host;
+    private String url;
     private String pushUrl;//订单推送访问地址
     private Long lastPingTime = System.currentTimeMillis();
 
 
-    public WssNotificationHandle(String pushUrl, String accessKey, String secretKey) {
-        this.pushUrl = pushUrl;
+    public WssNotificationHandle(String host, String url, String accessKey, String secretKey) {
+        this.host = host;
+        this.url = url;
         this.accessKey = accessKey;
         this.secretKey = secretKey;
     }
@@ -49,6 +52,7 @@ public class WssNotificationHandle {
 
 
     private void doConnect(List<String> channels, SubscriptionListener<String> callback) throws URISyntaxException {
+        pushUrl = "wss://" + host + url;
         webSocketClient = new WebSocketClient(new URI(pushUrl)) {
 
             @Override
@@ -139,7 +143,7 @@ public class WssNotificationHandle {
 
             //组合签名map
             //Combined signature map
-            as.createSignature(accessKey, secretKey, "GET", "api.hbdm.com", "/linear-swap-notification", map);
+            as.createSignature(accessKey, secretKey, "GET", host, url, map);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -6,7 +6,7 @@ import com.huobi.api.request.account.SwapMarketHistoryKlineRequest;
 import com.huobi.api.response.market.*;
 
 public interface MarketAPIService {
-    SwapContractInfoResponse getSwapContractInfo(String contractCode,String supportMarginMode);
+    SwapContractInfoResponse getSwapContractInfo(String contractCode, String supportMarginMode);
 
     SwapIndexResponse getSwapIndex(String contractCode);
 
@@ -14,7 +14,7 @@ public interface MarketAPIService {
 
     SwapOpenInterestResponse getSwapOpenInterest(String contractCode);
 
-    SwapMarketDepthResponse getSwapMarketDepth(String contractCode,String type);
+    SwapMarketDepthResponse getSwapMarketDepth(String contractCode, String type);
 
     SwapMarketHistoryKlineResponse getSwapMarketHistoryKline(SwapMarketHistoryKlineRequest request);
 
@@ -22,17 +22,17 @@ public interface MarketAPIService {
 
     SwapMarketTradeResponse getSwapMarketTrade(String contractCode);
 
-    SwapMarketHistoryTradeResponse getSwapMarketHistoryTrade(String contractCode,Integer size);
+    SwapMarketHistoryTradeResponse getSwapMarketHistoryTrade(String contractCode, Integer size);
 
     SwapRiskInfoResponse getSwapRiskInfo(String contractCode);
 
-    SwapInsuranceFundResponse getSwapInsuranceFund(String contractCode,Integer pageIndex,Integer pageSize);
+    SwapInsuranceFundResponse getSwapInsuranceFund(String contractCode, Integer pageIndex, Integer pageSize);
 
     SwapAdjustfactorResponse getSwapAdjustfactor(String contractCode);
 
-    SwapHisOpenInterestResponse getSwapHisOpenInterest(String contractCode,String period,Integer size,Integer amountType);
+    SwapHisOpenInterestResponse getSwapHisOpenInterest(String contractCode, String period, Integer size, Integer amountType);
 
-    SwapEliteAccountRatioResponse getSwapEliteAccountRatio(String contractCode,String period);
+    SwapEliteAccountRatioResponse getSwapEliteAccountRatio(String contractCode, String period);
 
     SwapElitePositionRatioResponse getSwapElitePositionRatio(String contractCode, String period);
 
@@ -40,15 +40,21 @@ public interface MarketAPIService {
 
     SwapFundingRateResponse getSwapFundingRate(String contractCode);
 
-    SwapHistoricalFundingRateResponse getSwapHistoricalFundingRate(String contractCode,Integer pageIndex,Integer pageSize);
+    SwapHistoricalFundingRateResponse getSwapHistoricalFundingRate(String contractCode, Integer pageIndex, Integer pageSize);
 
     SwapLiquidationOrdersResponse getSwapLiquidationOrders(SwapLiquidationOrdersRequest request);
 
-    LinearSwapPremiumIndexKlineResponse getLinearSwapPremiumIndexKline(String contractCode,String period,Integer size);
+    LinearSwapPremiumIndexKlineResponse getLinearSwapPremiumIndexKline(String contractCode, String period, Integer size);
 
-    LinearSwapEstimatedRateKlineResponse getLinearSwapEstimatedRateKline(String contractCode,String period,Integer size);
+    LinearSwapEstimatedRateKlineResponse getLinearSwapEstimatedRateKline(String contractCode, String period, Integer size);
 
     LinearSwapBasisResponse getLinearSwapBasis(LinearSwapBasisRequest request);
 
     SwapEstimatedSettlementPriceResponse getSwapEstimatedSettlementPrice(String contractCode);
+
+    BatchMergedResponse getBatchMerged(String contractCode);
+
+    LinearSwapMarkPriceKlineResponse getLinearSwapMarkPriceKline(String contractCode, String period, Integer size);
+
+    SwapLadderMarginResponse getSwapLadderMargin(String contractCode);
 }

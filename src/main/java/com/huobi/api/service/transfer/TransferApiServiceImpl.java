@@ -23,7 +23,7 @@ public class TransferApiServiceImpl implements TransferApiService {
 
 
     /**
-
+     *
      */
     @Override
     public UsdtSwapTransferResponse transfer(UsdtSwapTransferRequest request) {
@@ -33,8 +33,8 @@ public class TransferApiServiceImpl implements TransferApiService {
             params.put("from", request.getFrom());
             params.put("to", request.getTo());
             params.put("margin-account", request.getMargin_account());
-            params.put("currency",request.getCurrency());
-            params.put("amount",request.getAmount());
+            params.put("currency", request.getCurrency());
+            params.put("amount", request.getAmount());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.USDT_SWAP_TRANSFER, params);
             UsdtSwapTransferResponse response = JSON.parseObject(body, UsdtSwapTransferResponse.class);
             return response;

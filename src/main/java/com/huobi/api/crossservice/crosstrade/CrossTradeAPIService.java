@@ -16,7 +16,6 @@ public interface CrossTradeAPIService {
 
     SwapCrossOrderInfoResponse swapCrossOrderInfoRequest(SwapCrossOrderInfoRequest request);//获取合约订单信息（全仓模式）
 
-
     SwapCrossOrderDetailResponse swapCrossOrderDetailRequest(SwapCrossOrderDetailRequest request);//获取订单明细信息（全仓模式）
 
     SwapCrossOpenordersResponse swapCrossOpenordersRequest(SwapCrossOpenordersRequest request);//获取合约当前未成交委托（全仓模式）
@@ -50,4 +49,9 @@ public interface CrossTradeAPIService {
     SwapTpslHisordersResponse swapCrossTpslHisordersResponse(SwapTpslHisordersRequset request);
 
     SwapRelationTpslOrderResponse swapCrossRelationTpslOrderResponse(SwapRelationTpslOrderRequest request);
+
+    SwapHisordersExactResponse swapCrossHisordersResponse(SwapHisordersExactRequest request);
+
+    SwapMatchresultsExactResponse swapCrossMatchresultsResponse(SwapMatchresultsExactRequest request);
+
 }

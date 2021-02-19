@@ -79,6 +79,8 @@ public class SwapCrossOrderDetailResponse {
         private Integer totalSize;
         @SerializedName("is_tpsl")
         private Integer isTpsl;
+        @SerializedName("real_profit")
+        private BigDecimal realProfit;
         private List<TradesBean> trades;
 
         @Data
@@ -101,7 +103,9 @@ public class SwapCrossOrderDetailResponse {
             private Long createdAt;
             @SerializedName("fee_asset")
             private String feeAsset;
-
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
+            private BigDecimal profit;
         }
     }
 }

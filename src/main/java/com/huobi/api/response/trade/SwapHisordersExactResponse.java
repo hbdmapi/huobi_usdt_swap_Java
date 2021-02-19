@@ -1,36 +1,37 @@
-package com.huobi.api.crossresponse.trade;
+package com.huobi.api.response.trade;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Builder
 @Data
 @AllArgsConstructor
-public class SwapCrossHisordersResponse {
-
+public class SwapHisordersExactResponse {
     private String status;
-    private DataBean data;
     private Long ts;
+    private List<DataBean> data;
 
+    @Builder
     @Data
     @AllArgsConstructor
-    public static class DataBean {
-
-        @SerializedName("total_page")
-        private Integer totalPage;
-        @SerializedName("current_page")
-        private Integer currentPage;
-        @SerializedName("total_size")
-        private Integer totalSize;
+    public static class DataBean{
+        @SerializedName("remain_size")
+        private Integer remainSize;
+        @SerializedName("next_id")
+        private Long nextId;
         private List<OrdersBean> orders;
 
+        @Builder
         @Data
         @AllArgsConstructor
-        public static class OrdersBean {
-
+        public static class OrdersBean{
+            @SerializedName("query_id")
+            private Long queryId;
             @SerializedName("order_id")
             private Long orderId;
             @SerializedName("order_id_str")
@@ -38,6 +39,10 @@ public class SwapCrossHisordersResponse {
             private String symbol;
             @SerializedName("contract_code")
             private String contractCode;
+            @SerializedName("margin_mode")
+            private String marginMode;
+            @SerializedName("margin_account")
+            private String marginAccount;
             @SerializedName("lever_rate")
             private Integer leverRate;
             private String direction;
@@ -52,33 +57,23 @@ public class SwapCrossHisordersResponse {
             private String orderPriceType;
             @SerializedName("margin_frozen")
             private BigDecimal marginFrozen;
-            @SerializedName("margin_asset")
-            private String marginAsset;
             private BigDecimal profit;
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
             @SerializedName("trade_volume")
             private BigDecimal tradeVolume;
             @SerializedName("trade_turnover")
             private BigDecimal tradeTurnover;
             private BigDecimal fee;
-            @SerializedName("fee_asset")
-            private String feeAsset;
             @SerializedName("trade_avg_price")
             private BigDecimal tradeAvgPrice;
             private Integer status;
             @SerializedName("order_type")
             private Integer orderType;
+            @SerializedName("fee_asset")
+            private String feeAsset;
             @SerializedName("liquidation_type")
             private String liquidationType;
-            @SerializedName("margin_mode")
-            private String marginMode;
-            @SerializedName("margin_frozen")
-            private String marginAccount;
-            @SerializedName("update_time")
-            private Long updateTime;
-            @SerializedName("is_tpsl")
-            private Integer isTpsl;
-            @SerializedName("real_profit")
-            private BigDecimal realProfit;
         }
     }
 }

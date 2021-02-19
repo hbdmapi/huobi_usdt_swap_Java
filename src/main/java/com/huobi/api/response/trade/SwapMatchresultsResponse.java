@@ -96,7 +96,8 @@ public class SwapMatchresultsResponse {
             private String marginMode;
             @SerializedName("margin_account")
             private String marginAccount;
-
+            @SerializedName("real_profit")
+            private BigDecimal realProfit;
         }
     }
 }

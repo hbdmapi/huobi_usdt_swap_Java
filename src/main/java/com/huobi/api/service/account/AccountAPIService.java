@@ -1,9 +1,7 @@
 package com.huobi.api.service.account;
 
 
-import com.huobi.api.request.account.SwapFinancialRecordRequest;
-import com.huobi.api.request.account.SwapMasterSubTransferRecordRequest;
-import com.huobi.api.request.account.SwapMasterSubTransferRequest;
+import com.huobi.api.request.account.*;
 import com.huobi.api.response.account.*;
 
 import java.math.BigDecimal;
@@ -22,7 +20,7 @@ public interface AccountAPIService {
 
     SwapSubAccountInfoResponse getSwapSubAccountInfo(String contractCode, Long subUid);//查询单个子账户资产信息
 
-    SwapSubPositionInfoResponse getSwapSubPositionInfo(String contractCode , Long subUid);//查询单个子账户持仓信息
+    SwapSubPositionInfoResponse getSwapSubPositionInfo(String contractCode, Long subUid);//查询单个子账户持仓信息
 
     SwapFinancialRecordResponse getSwapFinancialRecord(SwapFinancialRecordRequest request);//查询用户财务记录
 
@@ -44,5 +42,11 @@ public interface AccountAPIService {
 
     SwapAvailableLevelRateResponse getSwapAvailableLevelRate(String contractCode);//查询用户可用杠杆倍数
 
+    SwapUserSettlementRecordsResponse getSwapUserSettlementRecords(SwapUserSettlementRecordsRequest request);
 
+    SwapFinancialRecordExactResponse getSwapFinancialRecordExact(SwapFinancialRecordExactRequest request);
+
+    SwapSubAuthResponse getSwapSubAuth(String subUid, Integer subAuth);
+
+    SwapSubAccountInfoListResponse getSwapSubAccountInfoList(String contractCode, Integer pageIndex, Integer pageSize);
 }

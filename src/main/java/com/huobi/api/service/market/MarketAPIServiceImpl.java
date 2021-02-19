@@ -21,15 +21,15 @@ public class MarketAPIServiceImpl implements MarketAPIService {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public SwapContractInfoResponse getSwapContractInfo(String contractCode,String supportMarginMode) {
+    public SwapContractInfoResponse getSwapContractInfo(String contractCode, String supportMarginMode) {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
             if (StringUtils.isNoneEmpty(contractCode)) {
                 params.put("contract_code", contractCode.toUpperCase());
             }
-            if (StringUtils.isNotEmpty(supportMarginMode)){
-                params.put("support_margin_mode",supportMarginMode);
+            if (StringUtils.isNotEmpty(supportMarginMode)) {
+                params.put("support_margin_mode", supportMarginMode);
             }
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.SWAP_CONTRACT_INFO, params);
             logger.debug("body:{}", body);
@@ -504,4 +504,65 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         }
         throw new ApiException(body);
     }
+
+    @Override
+    public BatchMergedResponse getBatchMerged(String contractCode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNoneEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.BATCH_MERGED, params);
+            logger.debug("body:{}", body);
+            BatchMergedResponse response = JSON.parseObject(body, BatchMergedResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public LinearSwapMarkPriceKlineResponse getLinearSwapMarkPriceKline(String contractCode, String period, Integer size) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("contract_code", contractCode.toUpperCase());
+            params.put("period", period);
+            params.put("size", size);
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.LINEAR_SWAP_MARK_PRICE_KLINE, params);
+            logger.debug("body:{}", body);
+            LinearSwapMarkPriceKlineResponse response = JSON.parseObject(body, LinearSwapMarkPriceKlineResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapLadderMarginResponse getSwapLadderMargin(String contractCode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.SWAP_LADDER_MARGIN, params);
+            logger.debug("body:{}", body);
+            SwapLadderMarginResponse response = JSON.parseObject(body, SwapLadderMarginResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
 }
