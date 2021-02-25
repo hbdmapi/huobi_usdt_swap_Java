@@ -53,6 +53,8 @@ public class SwapMarketTradeResponse {
             private String quantity;
             @SerializedName("trade_turnover")
             private String tradeTurnover;
+            @SerializedName("contract_code")
+            private String contractCode;
         }
     }
 }

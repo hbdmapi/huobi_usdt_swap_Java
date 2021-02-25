@@ -32,7 +32,9 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_ESTIMATED_SETTLEMENT_PRICE = "/linear-swap-api/v1/swap_estimated_settlement_price"; // 23.获取预估结算价
     public static final String BATCH_MERGED = "/linear-swap-ex/market/detail/batch_merged";  // 24.批量获取聚合行情
     public static final String LINEAR_SWAP_MARK_PRICE_KLINE = "/index/market/history/linear_swap_mark_price_kline";  // 25.获取标记价格的 K 线数据
+
     public static final String SWAP_LADDER_MARGIN = "/linear-swap-api/v1/swap_ladder_margin";  // 26.获取平台阶梯保证金
+    public static final String SWAP_BATCH_FUNDING_RATE = "/linear-swap-api/v1/swap_batch_funding_rate";  // 27.获取平台阶梯保证金
 
     //合约资产接口
     public static final String SWAP_ACCOUNT_INFO = "/linear-swap-api/v1/swap_account_info"; // 1.获取用户账户信息
@@ -58,6 +60,8 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_SUB_ACCOUNT_INFO_LIST = "/linear-swap-api/v1/swap_sub_account_info_list"; // 18.批量获取子账户资产信息
     public static final String SWAP_USER_SETTLEMENT_RECORDS = "/linear-swap-api/v1/swap_user_settlement_records"; // 19.查询用户结算记录
     public static final String SWAP_FINANCIAL_RECORD_EXACT = "/linear-swap-api/v1/swap_financial_record_exact"; // 20.组合查询用户财务记录
+
+    public static final String SWAP_BALANCE_VALUATION = "/linear-swap-api/v1/swap_balance_valuation"; // 21.获取账户总资产估值
 
     //合约交易接口
     public static final String SWAP_ORDER = "/linear-swap-api/v1/swap_order"; // 1.合约下单

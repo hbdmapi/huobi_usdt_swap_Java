@@ -494,4 +494,23 @@ public class AccountAPIServiceImpl implements AccountAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public SwapBalanceValuationResponse getSwapBalanceValuation(String ValuationAsset) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            if (StringUtils.isNotEmpty(ValuationAsset)){
+                params.put("valuation_asset",ValuationAsset.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_BALANCE_VALUATION, params);
+            logger.debug("body:{}", body);
+            SwapBalanceValuationResponse response = JSON.parseObject(body, SwapBalanceValuationResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 }

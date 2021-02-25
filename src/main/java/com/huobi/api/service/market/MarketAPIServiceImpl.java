@@ -565,4 +565,24 @@ public class MarketAPIServiceImpl implements MarketAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public SwapBatchFundingRateResponse getSwapBatchFundingRate(String contractCode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            if (StringUtils.isNotEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
+            }
+            body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapAPIConstants.SWAP_BATCH_FUNDING_RATE, params);
+            logger.debug("body:{}", body);
+            SwapBatchFundingRateResponse response = JSON.parseObject(body, SwapBatchFundingRateResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
 }

@@ -57,4 +57,6 @@ public interface MarketAPIService {
     LinearSwapMarkPriceKlineResponse getLinearSwapMarkPriceKline(String contractCode, String period, Integer size);
 
     SwapLadderMarginResponse getSwapLadderMargin(String contractCode);
+
+    SwapBatchFundingRateResponse getSwapBatchFundingRate(String contractCode);
 }
