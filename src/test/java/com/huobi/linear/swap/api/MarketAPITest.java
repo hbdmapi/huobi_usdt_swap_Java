@@ -212,4 +212,10 @@ public class MarketAPITest implements BaseTest {
         SwapBatchFundingRateResponse response=huobiAPIService.getSwapBatchFundingRate("");
         logger.debug("27、批量获取合约资金费率:{}",JSON.toJSONString(response));
     }
+
+    @Test
+    public void getMarketBbo(){
+        MarketBboResponse response= huobiAPIService.getMarketBbo("");
+        logger.debug("28、获取市场最优挂单:{}",JSON.toJSONString(response));
+    }
 }

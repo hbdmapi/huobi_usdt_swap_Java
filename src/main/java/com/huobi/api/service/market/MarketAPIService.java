@@ -59,4 +59,6 @@ public interface MarketAPIService {
     SwapLadderMarginResponse getSwapLadderMargin(String contractCode);
 
     SwapBatchFundingRateResponse getSwapBatchFundingRate(String contractCode);
+
+    MarketBboResponse getMarketBbo(String contractCode);
 }
