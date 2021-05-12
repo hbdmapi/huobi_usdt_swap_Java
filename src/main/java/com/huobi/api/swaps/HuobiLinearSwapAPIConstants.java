@@ -93,6 +93,12 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_RELATION_TPSL_ORDER = "/linear-swap-api/v1/swap_relation_tpsl_order";//查询开仓单关联的止盈止损订单详情
     public static final String SWAP_MATCHRESULTS_EXACT = "/linear-swap-api/v1/swap_matchresults_exact"; // 组合查询用户历史成交记录
     public static final String SWAP_HISORDERS_EXACT = "/linear-swap-api/v1/swap_hisorders_exact"; // 组合查询合约历史委托
+    public static final String SWAP_TRACK_ORDER = "/linear-swap-api/v1/swap_track_order"; // 跟踪委托订单下单
+
+    public static final String SWAP_TRACK_CANCEL= "/linear-swap-api/v1/swap_track_cancel"; // 跟踪委托订单撤单
+    public static final String SWAP_TRACK_CANCELALL = "/linear-swap-api/v1/swap_track_cancelall"; // 跟踪委托订单全部撤单
+    public static final String SWAP_TRACK_OPENORDERS = "/linear-swap-api/v1/swap_track_openorders"; // 跟踪委托订单当前委托
+    public static final String SWAP_TRACK_HISORDERS = "/linear-swap-api/v1/swap_track_hisorders"; // 跟踪委托订单历史委托
 
     //合约划转接口
     public static final String USDT_SWAP_TRANSFER = "/v2/account/transfer"; // 1.现货-USDT永续账户间进行资金的划转

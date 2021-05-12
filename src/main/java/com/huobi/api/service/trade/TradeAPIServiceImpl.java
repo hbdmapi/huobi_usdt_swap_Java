@@ -754,4 +754,130 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         throw new ApiException(body);
     }
 
+    @Override
+    public SwapTrackOrderResponse swapTrackOrderResponse(SwapTrackOrderRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("direction", request.getDirection());
+            params.put("offset", request.getOffset());
+            if (request.getLeverRate() != null && request.getLeverRate() != 0) {
+                params.put("lever_rate", request.getLeverRate());
+            }
+            params.put("volume", request.getVolume());
+            params.put("callback_rate", request.getCallbackRate());
+            params.put("active_price", request.getActivePrice());
+            params.put("order_price_type", request.getOrderPriceType());
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRACK_ORDER, params);
+            logger.debug("body:{}", body);
+            SwapTrackOrderResponse response = JSON.parseObject(body, SwapTrackOrderResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTrackCancelResponse swapTrackCancelResponse(SwapTrackCancelRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("order_id", request.getOrderId());
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRACK_CANCEL, params);
+            logger.debug("body:{}", body);
+            SwapTrackCancelResponse response = JSON.parseObject(body, SwapTrackCancelResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTrackCancelallResponse swapTrackCancelallResponse(SwapTrackCancelallRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (request.getDirection()!=null) {
+                params.put("direction", request.getDirection());
+            }
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRACK_CANCELALL, params);
+            logger.debug("body:{}", body);
+            SwapTrackCancelallResponse response = JSON.parseObject(body, SwapTrackCancelallResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTrackOpenordersResponse swapTrackOpenordersResponse(SwapTrackOpenordersRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (request.getTradeType()!=null) {
+                params.put("trade_type", request.getTradeType());
+            }
+            if (request.getPageIndex()!=null) {
+                params.put("page_index", request.getPageIndex());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRACK_OPENORDERS, params);
+            logger.debug("body:{}", body);
+            SwapTrackOpenordersResponse response = JSON.parseObject(body, SwapTrackOpenordersResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
+    public SwapTrackHisordersResponse swapTrackHisordersResponse(SwapTrackHisordersRequest request) {
+        String body;
+        Map<String, Object> params = new HashMap<>();
+        try {
+            params.put("contract_code", request.getContractCode().toUpperCase());
+            params.put("status",request.getStatus());
+            params.put("trade_type", request.getTradeType());
+            params.put("create_date",request.getCreateDate());
+            if (request.getPageIndex()!=null) {
+                params.put("page_index", request.getPageIndex());
+            }
+            if (request.getPageSize()!=null){
+                params.put("page_size",request.getPageSize());
+            }
+            if (request.getSortBy()!=null){
+                params.put("sort_by",request.getSortBy());
+            }
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRACK_HISORDERS, params);
+            logger.debug("body:{}", body);
+            SwapTrackHisordersResponse response = JSON.parseObject(body, SwapTrackHisordersResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())){
+                return response;
+            }
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
 }

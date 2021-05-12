@@ -52,4 +52,14 @@ public interface TradeAPIService {
     SwapHisordersExactResponse swapHisordersExactResponse(SwapHisordersExactRequest request);
 
     SwapMatchresultsExactResponse swapMatchresultsExactResponse(SwapMatchresultsExactRequest request);
+
+    SwapTrackOrderResponse swapTrackOrderResponse(SwapTrackOrderRequest request);
+
+    SwapTrackCancelResponse swapTrackCancelResponse(SwapTrackCancelRequest request);
+
+    SwapTrackCancelallResponse swapTrackCancelallResponse(SwapTrackCancelallRequest request);
+
+    SwapTrackOpenordersResponse swapTrackOpenordersResponse(SwapTrackOpenordersRequest request);
+
+    SwapTrackHisordersResponse swapTrackHisordersResponse(SwapTrackHisordersRequest request);
 }

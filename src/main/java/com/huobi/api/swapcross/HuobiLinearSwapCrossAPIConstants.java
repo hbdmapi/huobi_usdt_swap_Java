@@ -52,5 +52,11 @@ public class HuobiLinearSwapCrossAPIConstants {
     public static final String SWAP_CROSS_RELATION_TPSL_ORDER = "/linear-swap-api/v1/swap_cross_relation_tpsl_order";//查询开仓单关联的止盈止损订单详情
     public static final String SWAP_CROSS_HISORDERS_EXACT = "/linear-swap-api/v1/swap_cross_hisorders_exact";  // 组合查询合约历史委托(全仓模式)
     public static final String SWAP_CROSS_MATCHRESULTS_EXACT = "/linear-swap-api/v1/swap_cross_matchresults_exact";  // 组合查询用户历史成交记录(全仓模式)
+    public static final String SWAP_CROSS_TRACK_ORDER = "/linear-swap-api/v1/swap_cross_track_order"; // 跟踪委托订单下单
+
+    public static final String SWAP_CROSS_TRACK_CANCEL= "/linear-swap-api/v1/swap_cross_track_cancel"; // 跟踪委托订单撤单
+    public static final String SWAP_CROSS_TRACK_CANCELALL = "/linear-swap-api/v1/swap_cross_track_cancelall"; // 跟踪委托订单全部撤单
+    public static final String SWAP_CROSS_TRACK_OPENORDERS = "/linear-swap-api/v1/swap_cross_track_openorders"; // 跟踪委托订单当前委托
+    public static final String SWAP_CROSS_TRACK_HISORDERS = "/linear-swap-api/v1/swap_cross_track_hisorders"; // 跟踪委托订单历史委托
 
 }

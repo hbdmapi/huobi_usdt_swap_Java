@@ -354,4 +354,68 @@ public class CrossTradeAPITest implements BaseTest {
         SwapMatchresultsExactResponse response = huobiCrossAPIService.swapCrossMatchresultsResponse(request);
         logger.debug("24.组合查询用户历史成交记录：{}", JSON.toJSONString(response));
     }
+
+    @Test
+    public void swapCrossTrackOrders(){
+        SwapTrackOrderRequest request=SwapTrackOrderRequest.builder()
+                .contractCode("btc-usdt")
+                .direction("buy")
+                .offset("open")
+                .leverRate(5)
+                .volume(BigDecimal.valueOf(1))
+                .activePrice(BigDecimal.valueOf(390))
+                .callbackRate(BigDecimal.valueOf(0.1))
+                .orderPriceType("optimal_5")
+                .build();
+        SwapTrackOrderResponse response=huobiCrossAPIService.swapCrossTrackOrderResponse(request);
+        logger.debug("25.跟踪委托订单下单：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void swapCrossTrackCancel(){
+        SwapTrackCancelRequest request= SwapTrackCancelRequest.builder()
+                .orderId("827232952382566400")
+                .contractCode("btc-usdt")
+                .build();
+        SwapTrackCancelResponse response=huobiCrossAPIService.swapCrossTrackCancelResponse(request);
+        logger.debug("26.跟踪委托订单撤单：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void swapCrossTrackCancelall(){
+        SwapTrackCancelallRequest request= SwapTrackCancelallRequest.builder()
+                .contractCode("btc-usdt")
+                .direction("")
+                .offset("")
+                .build();
+        SwapTrackCancelallResponse response=huobiCrossAPIService.swapCrossTrackCancelallResponse(request);
+        logger.debug("27.跟踪委托订单全部撤单：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void swapCrossTrackOpenorders(){
+        SwapTrackOpenordersRequest request=SwapTrackOpenordersRequest.builder()
+                .contractCode("btc-usdt")
+                .tradeType(0)
+                .pageIndex(1)
+                .pageSize(2)
+                .build();
+        SwapTrackOpenordersResponse response=huobiCrossAPIService.swapCrossTrackOpenordersResponse(request);
+        logger.debug("28.跟踪委托订单当前委托：{}", JSON.toJSONString(response));
+    }
+
+    @Test
+    public void swapCrossTrackHisorders(){
+        SwapTrackHisordersRequest request= SwapTrackHisordersRequest.builder()
+                .contractCode("btc-usdt")
+                .status("0")
+                .tradeType(0)
+                .createDate(10l)
+                .pageIndex(1)
+                .pageSize(1)
+                .sortBy("")
+                .build();
+        SwapTrackHisordersResponse response=huobiCrossAPIService.swapCrossTrackHisordersResponse(request);
+        logger.debug("29.跟踪委托订单当前委托：{}", JSON.toJSONString(response));
+    }
 }

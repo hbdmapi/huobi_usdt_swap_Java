@@ -54,4 +54,13 @@ public interface CrossTradeAPIService {
 
     SwapMatchresultsExactResponse swapCrossMatchresultsResponse(SwapMatchresultsExactRequest request);
 
+    SwapTrackOrderResponse swapCrossTrackOrderResponse(SwapTrackOrderRequest request);
+
+    SwapTrackCancelResponse swapCrossTrackCancelResponse(SwapTrackCancelRequest request);
+
+    SwapTrackCancelallResponse swapCrossTrackCancelallResponse(SwapTrackCancelallRequest request);
+
+    SwapTrackOpenordersResponse swapCrossTrackOpenordersResponse(SwapTrackOpenordersRequest request);
+
+    SwapTrackHisordersResponse swapCrossTrackHisordersResponse(SwapTrackHisordersRequest request);
 }
