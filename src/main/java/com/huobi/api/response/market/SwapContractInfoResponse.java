@@ -41,7 +41,7 @@ public class SwapContractInfoResponse {
         @SerializedName("contract_code")
         private String contractCode;
         @SerializedName("contract_size")
-        private Integer contractSize;
+        private BigDecimal contractSize;
         @SerializedName("price_tick")
         private BigDecimal priceTick;
         @SerializedName("settlement_date")
