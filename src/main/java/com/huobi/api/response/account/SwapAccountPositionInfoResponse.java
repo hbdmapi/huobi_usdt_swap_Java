@@ -1,7 +1,6 @@
 package com.huobi.api.response.account;
 
 import com.google.gson.annotations.SerializedName;
-import com.sun.imageio.plugins.common.BogusColorSpace;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

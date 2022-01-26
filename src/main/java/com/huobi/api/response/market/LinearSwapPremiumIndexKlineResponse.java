@@ -3,7 +3,6 @@ package com.huobi.api.response.market;
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import sun.rmi.runtime.Log;
 
 import javax.swing.text.Highlighter;
 import java.util.List;
