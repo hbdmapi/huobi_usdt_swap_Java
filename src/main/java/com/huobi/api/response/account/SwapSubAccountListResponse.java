@@ -62,6 +62,8 @@ public class SwapSubAccountListResponse {
             private String marginMode;
             @SerializedName("margin_account")
             private String marginAccount;
+            @SerializedName("trade_partition")
+            private String tradePartition;
 
         }
     }

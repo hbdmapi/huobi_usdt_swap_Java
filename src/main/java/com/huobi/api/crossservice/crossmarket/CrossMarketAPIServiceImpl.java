@@ -21,12 +21,24 @@ public class CrossMarketAPIServiceImpl implements CrossMarketAPIService {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public SwapCrossAdjustfactorResponse getSwapCrossAdjustfactor(String contractCode) {
+    public SwapCrossAdjustfactorResponse getSwapCrossAdjustfactor(String contractCode,String contractType,String pair,String businessType,String tradePartition) {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
             if (StringUtils.isNoneEmpty(contractCode)) {
                 params.put("contract_code", contractCode.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(pair)){
+                params.put("pair",pair.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(contractType)){
+                params.put("contract_type",contractType);
+            }
+            if (StringUtils.isNotEmpty(businessType)){
+                params.put("business_type",businessType);
+            }
+            if (StringUtils.isNotEmpty(tradePartition)){
+                params.put("trade_partition",tradePartition);
             }
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_ADJUSTFACTOR, params);
             logger.debug("body:{}", body);
@@ -61,12 +73,24 @@ public class CrossMarketAPIServiceImpl implements CrossMarketAPIService {
     }
 
     @Override
-    public SwapCrossTradeStateResponse getSwapCrossTradeState(String contractCode) {
+    public SwapCrossTradeStateResponse getSwapCrossTradeState(String contractCode,String contractType,String pair,String businessType,String tradePartition) {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
             if (StringUtils.isNoneEmpty(contractCode)) {
                 params.put("contract_code", contractCode.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(contractType)){
+                params.put("contract_type",contractType);
+            }
+            if (StringUtils.isNotEmpty(pair)){
+                params.put("pair",pair.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(businessType)){
+                params.put("business_type",businessType);
+            }
+            if (StringUtils.isNotEmpty(tradePartition)){
+                params.put("trade_partition",tradePartition);
             }
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRADE_STATE, params);
             logger.debug("body:{}", body);
@@ -81,12 +105,24 @@ public class CrossMarketAPIServiceImpl implements CrossMarketAPIService {
     }
 
     @Override
-    public SwapLadderMarginResponse getSwapCrossLadderMargin(String contractCode) {
+    public SwapLadderMarginResponse getSwapCrossLadderMargin(String contractCode,String contractType,String pair,String businessType,String tradePartition) {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
             if (StringUtils.isNoneEmpty(contractCode)) {
                 params.put("contract_code", contractCode.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(pair)){
+                params.put("pair",pair.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(contractType)){
+                params.put("contract_type",contractType);
+            }
+            if (StringUtils.isNotEmpty(businessType)){
+                params.put("business_type",businessType);
+            }
+            if (StringUtils.isNotEmpty(tradePartition)){
+                params.put("trade_partition",tradePartition);
             }
             body = HbdmHttpClient.getInstance().doGet(url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_LADDER_MARGIN, params);
             logger.debug("body:{}", body);

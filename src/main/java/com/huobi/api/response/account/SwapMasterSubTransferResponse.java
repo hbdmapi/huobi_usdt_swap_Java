@@ -32,5 +32,7 @@ public class SwapMasterSubTransferResponse {
 
         @SerializedName("order_id")
         private Long orderId;
+        @SerializedName("client_order_id")
+        private Long clientOrderId;
     }
 }

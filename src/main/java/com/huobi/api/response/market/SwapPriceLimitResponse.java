@@ -38,6 +38,12 @@ public class SwapPriceLimitResponse {
         private BigDecimal highLimit;
         @SerializedName("low_limit")
         private BigDecimal lowLimit;
-
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("contract_type")
+        private String contractType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

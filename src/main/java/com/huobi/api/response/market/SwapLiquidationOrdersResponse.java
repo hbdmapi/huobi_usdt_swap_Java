@@ -57,7 +57,14 @@ public class SwapLiquidationOrdersResponse {
             private String offset;
             private BigDecimal price;
             private BigDecimal volume;
-
+            private String pair;
+            @SerializedName("business_type")
+            private String businessType;
+            @SerializedName("trade_partition")
+            private String tradePartition;
+            private BigDecimal amount;
+            @SerializedName("trade_turnover")
+            private BigDecimal tradeTurnover;
         }
     }
 }

@@ -38,6 +38,7 @@ public class SwapCrossTransferLimitResponse {
         private BigDecimal netTransferInMaxDaily;
         @SerializedName("net_transfer_out_max_daily")
         private BigDecimal netTransferOutMaxDaily;
-
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

@@ -35,6 +35,8 @@ public class SwapAdjustfactorResponse {
         private String contractCode;
         @SerializedName("margin_mode")
         private String marginMode;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<DataList> list;
 
         @Data

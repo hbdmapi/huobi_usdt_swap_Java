@@ -1,4 +1,4 @@
-package com.huobi.api.crossresponse.market;
+package com.huobi.api.response.account;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
@@ -9,53 +9,41 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
-@Builder
 @Data
-public class SwapCrossAdjustfactorResponse {
+@Builder
+public class SwapLeverPositionLimitResponse {
     private String status;
     private Long ts;
     private List<DataBean> data;
 
     @AllArgsConstructor
-    @Builder
     @Data
+    @Builder
     public static class DataBean{
         private String symbol;
         @SerializedName("contract_code")
         private String contractCode;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         @SerializedName("margin_mode")
         private String marginMode;
-        private String pair;
         @SerializedName("business_type")
         private String businessType;
         @SerializedName("contract_type")
         private String contractType;
-        @SerializedName("trade_partition")
-        private String tradePartition;
+        private String pair;
         private List<ListBean> list;
 
         @AllArgsConstructor
-        @Builder
         @Data
+        @Builder
         public static class ListBean{
             @SerializedName("lever_rate")
-            private Integer LeverRate;
-            private List<LaddersBean> ladders;
-
-            @AllArgsConstructor
-            @Builder
-            @Data
-            public static class LaddersBean{
-                @SerializedName("min_size")
-                private BigDecimal minSize;
-                @SerializedName("max_size")
-                private BigDecimal maxSize;
-                private Integer ladder;
-                @SerializedName("adjust_factor")
-                private BigDecimal adjustFactor;
-            }
+            private Long leverRate;
+            @SerializedName("buy_limit_value")
+            private BigDecimal buyLimitValue;
+            @SerializedName("sell_limit_value")
+            private BigDecimal sellLimitValue;
         }
     }
-
-
 }

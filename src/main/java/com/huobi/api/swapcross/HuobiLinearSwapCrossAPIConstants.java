@@ -22,6 +22,7 @@ public class HuobiLinearSwapCrossAPIConstants {
     public static final String SWAP_CROSS_USER_SETTLEMENT_RECORDS = "/linear-swap-api/v1/swap_cross_user_settlement_records";  // 10.查询用户结算记录(全仓模式)
 
     public static final String SWAP_CROSS_SUB_ACCOUNT_INFO_LIST = "/linear-swap-api/v1/swap_cross_sub_account_info_list";  // 11.批量获取子账户资产信息(全仓模式)
+    public static final String SWAP_CROSS_LEVER_POSITION_LIMIT="/linear-swap-api/v1/swap_cross_lever_position_limit";//12.查询用户所有杠杆持仓量限制
 
     //合约交易接口
     public static final String SWAP_CROSS_ORDER = "/linear-swap-api/v1/swap_cross_order"; // 1.合约下单(全仓模式)

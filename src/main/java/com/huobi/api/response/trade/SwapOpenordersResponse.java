@@ -123,6 +123,8 @@ public class SwapOpenordersResponse {
             private Long updateTime;
             @SerializedName("real_profit")
             private BigDecimal realProfit;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }

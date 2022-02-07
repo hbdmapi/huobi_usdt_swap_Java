@@ -19,4 +19,5 @@ public class SwapHisordersExactRequest {
     private Long fromId;
     private Integer size;
     private String direct;
+    private String pair;
 }

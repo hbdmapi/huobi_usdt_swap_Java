@@ -1,6 +1,7 @@
 package com.huobi.api.request.account;
 
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,5 @@ public class SwapMasterSubTransferRequest {
     private String toMarginAccount;//转入的保证金账户	"BTC-USDT"...
     private BigDecimal amount;//划转金额
     private String type;//划转类型	master_to_sub：母账户划转到子账户， sub_to_master：子账户划转到母账户
-
+    private Long clientOrderId;
 }

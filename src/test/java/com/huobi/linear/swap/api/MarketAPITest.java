@@ -19,7 +19,7 @@ public class MarketAPITest implements BaseTest {
     @Test
     public void getSwapContractInfo() {
         SwapContractInfoResponse result =
-                huobiAPIService.getSwapContractInfo("BTC-USDT", "all");
+                huobiAPIService.getSwapContractInfo("BTC-USDT-220325", "","","","all","");
         logger.debug("1.获取合约信息：{}", JSON.toJSONString(result));
     }
 
@@ -27,26 +27,26 @@ public class MarketAPITest implements BaseTest {
     @Test
     public void getSwapIndex() {
         SwapIndexResponse result =
-                huobiAPIService.getSwapIndex("btc-usdt");
+                huobiAPIService.getSwapIndex("btc-usdt","");
         logger.debug("2.获取合约指数信息：{}", JSON.toJSONString(result));
         result =
-                huobiAPIService.getSwapIndex("");
+                huobiAPIService.getSwapIndex("","");
         logger.debug("2.获取合约指数信息：{}", JSON.toJSONString(result));
     }
 
     @Test
     public void getSwapPriceLimit() {
         SwapPriceLimitResponse result =
-                huobiAPIService.getSwapPriceLimit("BTC-USDT");
+                huobiAPIService.getSwapPriceLimit("","","","all","all");
         logger.debug("3.获取合约最高限价和最低限价：{}", JSON.toJSONString(result));
     }
 
     @Test
     public void getSwapOpenInterest() {
         SwapOpenInterestResponse result =
-                huobiAPIService.getSwapOpenInterest("btc-usdt");
+                huobiAPIService.getSwapOpenInterest("btc-usdt","","","","");
         logger.debug("4.获取当前可用合约总持仓量:{}", JSON.toJSONString(result));
-        result = huobiAPIService.getSwapOpenInterest("");
+        result = huobiAPIService.getSwapOpenInterest("","","","","");
         logger.debug("4.获取当前可用合约总持仓量:{}", JSON.toJSONString(result));
     }
 
@@ -79,7 +79,7 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getSwapMarketTradeResponse() {
-        SwapMarketTradeResponse response = huobiAPIService.getSwapMarketTrade("BTC-USDT");
+        SwapMarketTradeResponse response = huobiAPIService.getSwapMarketTrade("BTC-USDT","","");
         logger.debug("8.获取市场最近成交记录:{}", JSON.toJSONString(response));
     }
 
@@ -91,7 +91,7 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getSwapRiskInfoResponse() {
-        SwapRiskInfoResponse response = huobiAPIService.getSwapRiskInfo("");
+        SwapRiskInfoResponse response = huobiAPIService.getSwapRiskInfo("","","");
         logger.debug("10.查询合约风险准备金余额和预估分摊比例:{}", JSON.toJSONString(response));
     }
 
@@ -103,13 +103,13 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getSwapAdjustfactorResponse() {
-        SwapAdjustfactorResponse response = huobiAPIService.getSwapAdjustfactor("BTC-USDT");
+        SwapAdjustfactorResponse response = huobiAPIService.getSwapAdjustfactor("BTC-USDT","");
         logger.debug("12.查询平台阶梯调整系数:{}", JSON.toJSONString(response));
     }
 
     @Test
     public void getSwapHisOpenInterestResponse() {
-        SwapHisOpenInterestResponse response = huobiAPIService.getSwapHisOpenInterest("BTC-USDT", "60min", 10, 1);
+        SwapHisOpenInterestResponse response = huobiAPIService.getSwapHisOpenInterest("BTC-USDT", "", "", "60min",10,1);
         logger.debug("13.平台持仓量的查询:{}", JSON.toJSONString(response));
     }
 
@@ -127,7 +127,7 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getSwapApiStateResponse() {
-        SwapApiStateResponse response = huobiAPIService.getSwapApiState("");
+        SwapApiStateResponse response = huobiAPIService.getSwapApiState("","");
         logger.debug("16.查询系统状态:{}", JSON.toJSONString(response));
     }
 
@@ -185,13 +185,13 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getSwapEstimatedSettlementPriceResponse() {
-        SwapEstimatedSettlementPriceResponse response = huobiAPIService.getSwapEstimatedSettlementPrice("btc-usdt");
+        SwapEstimatedSettlementPriceResponse response = huobiAPIService.getSwapEstimatedSettlementPrice("btc-usdt","","","","");
         logger.debug("23.获取预估结算价:{}", JSON.toJSONString(response));
     }
 
     @Test
     public void getBatchMerger() {
-        BatchMergedResponse response = huobiAPIService.getBatchMerged("");
+        BatchMergedResponse response = huobiAPIService.getBatchMerged("","","");
         logger.debug("24、批量获取聚合行情:{}", JSON.toJSONString(response));
     }
 
@@ -203,19 +203,25 @@ public class MarketAPITest implements BaseTest {
 
     @Test
     public void getSwapLadderMargin() {
-        SwapLadderMarginResponse response = huobiAPIService.getSwapLadderMargin("btc-usdt");
+        SwapLadderMarginResponse response = huobiAPIService.getSwapLadderMargin("btc-usdt","");
         logger.debug("26、获取平台阶梯保证金:{}", JSON.toJSONString(response));
     }
 
     @Test
     public void getSwapBatchFundingRate(){
-        SwapBatchFundingRateResponse response=huobiAPIService.getSwapBatchFundingRate("");
+        SwapBatchFundingRateResponse response=huobiAPIService.getSwapBatchFundingRate("","");
         logger.debug("27、批量获取合约资金费率:{}",JSON.toJSONString(response));
     }
 
     @Test
     public void getMarketBbo(){
-        MarketBboResponse response= huobiAPIService.getMarketBbo("");
+        MarketBboResponse response= huobiAPIService.getMarketBbo("","","");
         logger.debug("28、获取市场最优挂单:{}",JSON.toJSONString(response));
+    }
+
+    @Test
+    public void getSwapSettlementRecords(){
+        SwapSettlementRecordsResponse response=huobiAPIService.getSwapSettlementRecords("btc-usdt",0l,0l,1,20);
+        logger.debug("29、查询平台历史结算记录:{}",JSON.toJSONString(response));
     }
 }

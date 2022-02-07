@@ -36,7 +36,7 @@ public interface CrossTradeAPIService {
 
     SwapCrossTriggerHisordersResponse swapCrossTriggerHisordersResponse(SwapCrossTriggerHisordersRequest request);//获取计划委托历史委托（全仓模式）
 
-    SwapCrossSwitchLeverRateResponse getSwapCrossSwitchLeverRate(String contractCode, Integer lever_rate);//切换杠杆（全仓模式）
+    SwapCrossSwitchLeverRateResponse getSwapCrossSwitchLeverRate(String contractCode, Integer lever_rate,String pair,String contractType);//切换杠杆（全仓模式）
 
     SwapTpslOrderResponse swapCrossTpslOrderResponse(SwapTpslOrderRequest request);
 

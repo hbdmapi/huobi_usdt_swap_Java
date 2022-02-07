@@ -57,7 +57,8 @@ public class SwapHistoricalFundingRateResponse {
             private String realizedRate;
             @SerializedName("avg_premium_index")
             private String avgPremiumIndex;
-
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }

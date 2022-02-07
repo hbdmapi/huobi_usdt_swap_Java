@@ -27,6 +27,13 @@ public class SwapLadderMarginResponse {
         private String marginAccount;
         @SerializedName("margin_mode")
         private String marginMode;
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("contract_type")
+        private String contractType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<ListBean> list;
 
         @Builder

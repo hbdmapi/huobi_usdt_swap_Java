@@ -1,5 +1,6 @@
 package com.huobi.api.response.market;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,10 +19,15 @@ public class MarketBboResponse {
     @Data
     @AllArgsConstructor
     public static class TicksBean{
-        private String symbol;
+        @SerializedName("contract_code")
+        private String contractCode;
         private Long mrid;
         private List ask;
         private List bid;
         private Long ts;
+        @SerializedName("business_type")
+        public String businessType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

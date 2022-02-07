@@ -74,6 +74,14 @@ public class SwapHisordersExactResponse {
             private String feeAsset;
             @SerializedName("liquidation_type")
             private String liquidationType;
+            private String pair;
+            @SerializedName("business_type")
+            private String businessType;
+            @SerializedName("contract_type")
+            private String contractType;
+            @SerializedName("trade_partition")
+            private String tradePartition;
+
         }
     }
 }

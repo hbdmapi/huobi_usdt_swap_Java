@@ -103,5 +103,7 @@ public class SwapOrderInfoResponse {
         private Integer isTpsl;
         @SerializedName("real_profit")
         private BigDecimal realProfit;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

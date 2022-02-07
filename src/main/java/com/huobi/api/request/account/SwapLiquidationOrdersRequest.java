@@ -9,6 +9,7 @@ import lombok.Data;
 @Builder
 public class SwapLiquidationOrdersRequest {
     private String contractCode;//合约代码	"BTC-USDT" ...
+    private String pair;//交易对
     private Integer tradeType;//合约代码	"BTC-USDT" ...
     private Integer createDate;//日期	7，90（7天或者90天）
     private Integer pageIndex;//页码,不填默认第1页

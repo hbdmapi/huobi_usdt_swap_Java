@@ -42,5 +42,7 @@ public class SwapPositionLimitResponse {
         private BigDecimal sellLimit;
         @SerializedName("margin_mode")
         private String marginMode;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

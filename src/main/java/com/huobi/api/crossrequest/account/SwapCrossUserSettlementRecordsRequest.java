@@ -1,4 +1,4 @@
-package com.huobi.api.crossrequest.trade;
+package com.huobi.api.crossrequest.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

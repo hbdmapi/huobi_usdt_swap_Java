@@ -245,7 +245,7 @@ public class CrossTradeAPITest implements BaseTest {
 
     @Test
     public void getSwapCrossSwitchLeverRateResponse() {
-        SwapCrossSwitchLeverRateResponse response = huobiCrossAPIService.getSwapCrossSwitchLeverRate("ETH-USDT", 10);
+        SwapCrossSwitchLeverRateResponse response = huobiCrossAPIService.getSwapCrossSwitchLeverRate("ETH-USDT", 10,"","");
         logger.debug("16.切换杠杆：{}", JSON.toJSONString(response));
     }
 

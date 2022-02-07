@@ -30,6 +30,11 @@ public class SwapEliteAccountRatioResponse {
         private String symbol;
         @SerializedName("contract_code")
         private String contractCode;
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<DataList> list;
 
         @AllArgsConstructor

@@ -10,4 +10,6 @@ import lombok.Data;
 public class SwapTrackCancelRequest {
     private String contractCode;
     private String orderId;
+    private String pair;
+    private String contractType;
 }

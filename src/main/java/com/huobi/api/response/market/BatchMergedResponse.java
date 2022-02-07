@@ -35,6 +35,10 @@ public class BatchMergedResponse {
         @SerializedName("trade_turnover")
         private String tradeTurnover;
         private Long ts;
+        @SerializedName("trade_partition")
+        private String tradePartition;
+        @SerializedName("business_type")
+        private String businessType;
     }
 
 }

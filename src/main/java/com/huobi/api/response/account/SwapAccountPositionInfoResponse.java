@@ -76,6 +76,8 @@ public class SwapAccountPositionInfoResponse {
         private String marginMode;
         @SerializedName("margin_account")
         private String marginAccount;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<Positions> positions;
 
         @Data
@@ -128,6 +130,8 @@ public class SwapAccountPositionInfoResponse {
             private String marginMode;
             @SerializedName("margin_account")
             private String marginAccount;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }

@@ -23,5 +23,7 @@ public class SwapAvailableLevelRateResponse {
         private String availableLevelRate;
         @SerializedName("margin_mode")
         private String marginMode;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

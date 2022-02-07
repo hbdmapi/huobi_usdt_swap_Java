@@ -1,6 +1,7 @@
 package com.huobi.api.response.market;
 
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -28,7 +29,13 @@ public class SwapElitePositionRatioResponse {
          * "contract_code":"BTC-USDT"
          */
         private String symbol;
+        @SerializedName("contract_code")
         private String contractCode;
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<DataList> list;
 
         @Data
@@ -39,7 +46,9 @@ public class SwapElitePositionRatioResponse {
              * "sell_ratio": 0.5000,
              * "ts": 1600912800000
              */
+            @SerializedName("buy_ratio")
             private BigDecimal buyRatio;
+            @SerializedName("sell_ratio")
             private BigDecimal sellRatio;
             private Long ts;
         }

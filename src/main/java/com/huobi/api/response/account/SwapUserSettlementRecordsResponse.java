@@ -56,6 +56,8 @@ public class SwapUserSettlementRecordsResponse {
             private BigDecimal fee;
             @SerializedName("fee_asset")
             private String feeAsset;
+            @SerializedName("trade_partition")
+            private String tradePartition;
             private List<PositionsBean> positions;
 
             @Builder

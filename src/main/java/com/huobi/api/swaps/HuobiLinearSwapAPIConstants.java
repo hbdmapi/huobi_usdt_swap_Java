@@ -36,6 +36,8 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_LADDER_MARGIN = "/linear-swap-api/v1/swap_ladder_margin";  // 26.获取平台阶梯保证金
     public static final String SWAP_BATCH_FUNDING_RATE = "/linear-swap-api/v1/swap_batch_funding_rate";  // 27.获取平台阶梯保证金
     public static final String MARKET_BBO = "/linear-swap-ex/market/bbo";  // 28.获取市场最优挂单
+    public static final String SWAP_SETTLEMENT_RECORDS="/linear-swap-api/v1/swap_settlement_records";//29.查询平台历史结算记录
+    public static final String SWAP_LEVER_POSITION_LIMIT="/linear-swap-api/v1/swap_lever_position_limit";//30.查询用户所有杠杆持仓量限制
 
     //合约资产接口
     public static final String SWAP_ACCOUNT_INFO = "/linear-swap-api/v1/swap_account_info"; // 1.获取用户账户信息

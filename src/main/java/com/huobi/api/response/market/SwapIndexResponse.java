@@ -39,6 +39,7 @@ public class SwapIndexResponse {
         private BigDecimal indexPrice;
         @SerializedName("index_ts")
         private Long indexTs;
-
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

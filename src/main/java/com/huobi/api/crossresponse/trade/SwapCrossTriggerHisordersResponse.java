@@ -82,6 +82,13 @@ public class SwapCrossTriggerHisordersResponse {
             private String marginAccount;
             @SerializedName("update_time")
             private String updateTime;
+            private String pair;
+            @SerializedName("business_type")
+            private String businessType;
+            @SerializedName("contract_type")
+            private String contractType;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }

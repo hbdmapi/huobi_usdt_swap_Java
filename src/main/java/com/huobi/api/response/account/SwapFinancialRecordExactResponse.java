@@ -43,6 +43,8 @@ public class SwapFinancialRecordExactResponse {
             private String faceMarginAccount;
             private Integer type;
             private BigDecimal amount;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }

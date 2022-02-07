@@ -19,4 +19,5 @@ public class SwapCrossHisordersRequest {
     private Integer pageIndex;//页码，不填默认第1页	1
     private Integer pageSize;//每页条数，不填默认20	20	不得多于50
     private String sortBy;
+    private String pair;
 }

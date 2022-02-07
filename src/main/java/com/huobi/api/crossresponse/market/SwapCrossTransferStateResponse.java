@@ -43,6 +43,5 @@ public class SwapCrossTransferStateResponse {
         private Integer transferInnerIn;
         @SerializedName("transfer_inner_out")
         private Integer transferInnerOut;
-
     }
 }

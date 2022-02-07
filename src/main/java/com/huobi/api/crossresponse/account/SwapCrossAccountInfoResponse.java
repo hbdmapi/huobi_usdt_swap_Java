@@ -45,6 +45,8 @@ public class SwapCrossAccountInfoResponse {
         private String marginAccount;
         @SerializedName("contract_detail")
         private List<ContractDetailBean> contractDetail;
+        @SerializedName("futures_contract_detail")
+        private List<ContractDetailBean> futuresContractDetail;
 
         @Data
         @AllArgsConstructor
@@ -67,6 +69,14 @@ public class SwapCrossAccountInfoResponse {
             private BigDecimal leverRate;
             @SerializedName("adjust_factor")
             private BigDecimal adjustFactor;
+            private String pair;
+            @SerializedName("business_type")
+            private String businessType;
+            @SerializedName("contract_type")
+            private String contractType;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
+
     }
 }

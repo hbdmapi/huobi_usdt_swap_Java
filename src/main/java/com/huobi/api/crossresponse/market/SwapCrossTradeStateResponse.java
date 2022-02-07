@@ -22,7 +22,7 @@ public class SwapCrossTradeStateResponse {
     public static class DataBean{
         private String symbol;
         @SerializedName("contract_code")
-        private String contactCode;
+        private String contractCode;
         @SerializedName("margin_mode")
         private String marginMode;
         @SerializedName("margin_account")
@@ -30,5 +30,12 @@ public class SwapCrossTradeStateResponse {
         private Integer open;
         private Integer close;
         private Integer cancel;
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("contract_type")
+        private String contractType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

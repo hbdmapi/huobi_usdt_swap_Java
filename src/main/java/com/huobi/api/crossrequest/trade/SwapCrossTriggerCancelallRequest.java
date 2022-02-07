@@ -15,4 +15,6 @@ public class SwapCrossTriggerCancelallRequest {
     private String contractCode;//合约代码	"BTC-USDT"
     private String direction;
     private String offset;
+    private String pair;
+    private String contractType;
 }

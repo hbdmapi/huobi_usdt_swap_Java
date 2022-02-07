@@ -81,6 +81,13 @@ public class SwapCrossOrderDetailResponse {
         private Integer isTpsl;
         @SerializedName("real_profit")
         private BigDecimal realProfit;
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("contract_type")
+        private String contractType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<TradesBean> trades;
 
         @Data

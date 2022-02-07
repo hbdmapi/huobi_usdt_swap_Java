@@ -14,4 +14,5 @@ public class SwapCrossOrderDetailRequest {
     private Integer orderType;//订单类型，1:报单 、 2:撤单  、4:交割
     private Integer pageIndex;//第几页,不填第一页
     private Integer pageSize;//不填默认20，不得多于50
+    private String pair;
 }

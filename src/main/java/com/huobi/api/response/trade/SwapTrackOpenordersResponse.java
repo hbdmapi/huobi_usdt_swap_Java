@@ -59,6 +59,13 @@ public class SwapTrackOpenordersResponse {
             private BigDecimal activePrice;
             @SerializedName("is_active")
             private Integer isActive;
+            private String pair;
+            @SerializedName("business_type")
+            private String businessType;
+            @SerializedName("contract_type")
+            private String contractType;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }

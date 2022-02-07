@@ -15,5 +15,5 @@ public class SwapTrackHisordersRequest {
     private Integer pageIndex;
     private Integer pageSize;
     private String sortBy;
-
+    private String pair;
 }

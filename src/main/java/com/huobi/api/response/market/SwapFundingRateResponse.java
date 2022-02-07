@@ -43,6 +43,8 @@ public class SwapFundingRateResponse {
         private String estimatedRate;
         @SerializedName("next_funding_time")
         private String nextFundingTime;
+        @SerializedName("trade_partition")
+        private String tradePartition;
 
     }
 }

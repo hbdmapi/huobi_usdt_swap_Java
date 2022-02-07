@@ -54,6 +54,15 @@ public class SwapContractInfoResponse {
         private String supportMarginMode;
         @SerializedName("delivery_time")
         private Long deliveryTime;
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("delivery_date")
+        private String deliveryDate;
+        @SerializedName("contract_type")
+        private String contractType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
 
     }
 }

@@ -17,4 +17,6 @@ public class SwapCrossOpenordersRequest {
     private Integer pageSize;//不填默认20，不得多于50
     private String sortBy;
     private Integer tradeType;
+    private String pair;
+    private String tradePartition;
 }

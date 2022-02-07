@@ -44,7 +44,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             params.put("offset", request.getOffset().getValue());
             params.put("order_price_type", request.getOrderPriceType());
             params.put("lever_rate", request.getLeverRate());
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
+            if (request.getContractType() != null) {
+                params.put("contract_type", request.getContractType());
+            }
             if (request.getPrice() != null) {
                 params.put("price", request.getPrice());
             }
@@ -96,8 +104,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
                         params.put("offset", e.getOffset().getValue());
                         params.put("order_price_type", e.getOrderPriceType());
                         params.put("lever_rate", e.getLeverRate());
-                        params.put("contract_code", e.getContractCode());
-
+                        if (StringUtils.isNotEmpty(e.getContractCode())) {
+                            params.put("contract_code", e.getContractCode().toUpperCase());
+                        }
+                        if (StringUtils.isNotEmpty(e.getPair())) {
+                            params.put("pair", e.getPair().toUpperCase());
+                        }
+                        if (e.getContractType() != null) {
+                            params.put("contract_type", e.getContractType());
+                        }
                         if (e.getPrice() != null) {
                             params.put("price", e.getPrice());
                         }
@@ -156,7 +171,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
+            if (request.getContractType() != null) {
+                params.put("contract_type", request.getContractType());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_CANCEL, params);
             logger.debug("body:{}", body);
             SwapCrossCancelResponse response = JSON.parseObject(body, SwapCrossCancelResponse.class);
@@ -179,7 +202,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
+            if (request.getContractType() != null) {
+                params.put("contract_type", request.getContractType());
+            }
             if (request.getDirection() != null) {
                 params.put("direction", request.getDirection());
             }
@@ -204,7 +235,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
             if (request.getClientOrderId() != null) {
                 params.put("client_order_id", request.getClientOrderId());
             }
@@ -232,7 +268,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
             params.put("order_id", request.getOrderId());
             if (request.getCreatedAt() != null) {
                 params.put("created_at", request.getCreatedAt());
@@ -279,7 +320,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (request.getTradeType() != null) {
                 params.put("trade_type", request.getTradeType());
             }
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getTradePartition())){
+                params.put("trade_partition",request.getTradePartition());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_OPENORDERS, params);
             logger.debug("body:{}", body);
             SwapCrossOpenordersResponse response = JSON.parseObject(body, SwapCrossOpenordersResponse.class);
@@ -302,7 +351,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             params.put("type", request.getType());
             params.put("status", request.getStatus());
             params.put("create_date", request.getCreateDate());
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
             if (request.getPageSize() != null) {
                 params.put("page_size", request.getPageSize());
             }
@@ -332,7 +386,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             Map<String, Object> params = new HashMap<>();
             params.put("trade_type", request.getTradeType());
             params.put("create_date", request.getCreateDate());
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
             if (request.getPageIndex() != null) {
                 params.put("page_index", request.getPageIndex());
             }
@@ -360,7 +419,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (StringUtils.isNotEmpty(request.getOrderPriceType())) {
                 params.put("order_price_type", request.getOrderPriceType());
             }
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
+            if (request.getContractType() != null) {
+                params.put("contract_type", request.getContractType());
+            }
             params.put("direction", request.getDirection());
             params.put("volume", request.getVolume());
             if (request.getClientOrderId() != null) {
@@ -383,7 +450,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             params.put("trigger_type", request.getTriggerType());
             params.put("trigger_price", request.getTriggerPrice());
             params.put("volume", request.getVolume());
@@ -415,7 +490,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             params.put("order_id", request.getOrderId());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRIGGER_CANCEL, params);
             logger.debug("body:{}", body);
@@ -435,7 +518,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             if (request.getDirection() != null) {
                 params.put("direction", request.getDirection());
             }
@@ -459,7 +550,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             if (request.getPageIndex() != null) {
                 params.put("page_index", request.getPageIndex());
             }
@@ -468,6 +564,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             }
             if (request.getTradeType() != null) {
                 params.put("trade_type", request.getTradeType());
+            }
+            if (StringUtils.isNotEmpty(request.getTradePartition())){
+                params.put("trade_partition",request.getTradePartition());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRIGGER_OPENORDERS, params);
             logger.debug("body:{}", body);
@@ -486,11 +585,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             params.put("trade_type", request.getTradeType());
             params.put("status", request.getStatus());
             params.put("create_date", request.getCreateDate());
-
             if (request.getPageIndex() != null) {
                 params.put("page_index", request.getPageIndex());
             }
@@ -513,11 +616,19 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
     }
 
     @Override
-    public SwapCrossSwitchLeverRateResponse getSwapCrossSwitchLeverRate(String contractCode, Integer leverRate) {
+    public SwapCrossSwitchLeverRateResponse getSwapCrossSwitchLeverRate(String contractCode, Integer leverRate, String pair, String contractType) {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", contractCode.toUpperCase());
+            if (StringUtils.isNotEmpty(contractCode)) {
+                params.put("contract_code", contractCode.toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(pair)) {
+                params.put("pair", pair.toUpperCase());
+            }
+            if (contractType != null) {
+                params.put("contract_type", contractType);
+            }
             params.put("lever_rate", leverRate);
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_SWITCH_LEVER_RATE, params);
             logger.debug("body:{}", body);
@@ -536,7 +647,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             params.put("direction", request.getDirection());
             params.put("volume", request.getVolume());
             if (request.getTpTriggerPrice() != null && request.getTpTriggerPrice() != BigDecimal.valueOf(0)) {
@@ -574,7 +693,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             params.put("order_id", request.getOrderId());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_CANCEL, params);
             logger.debug("body:{}", body);
@@ -593,7 +720,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             if (request.getDirection() != null) {
                 params.put("direction", request.getDirection());
             }
@@ -614,7 +749,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             if (request.getPageIndex() != null) {
                 params.put("page_index", request.getPageIndex());
             }
@@ -623,6 +763,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             }
             if (request.getTradeType() != null) {
                 params.put("trade_type", request.getTradeType());
+            }
+            if (StringUtils.isNotEmpty(request.getTradePartition())){
+                params.put("trade_partition",request.getTradePartition());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TPSL_OPENORDERS, params);
             logger.debug("body:{}", body);
@@ -641,7 +784,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             params.put("status", request.getStatus());
             params.put("create_date", request.getCreateDate());
             if (request.getPageIndex() != null) {
@@ -670,7 +818,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             params.put("order_id", request.getOrderId());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_RELATION_TPSL_ORDER, params);
             logger.debug("body:{}", body);
@@ -689,7 +842,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
             params.put("trade_type", request.getTradeType());
             params.put("type", request.getType());
             params.put("status", request.getStatus());
@@ -728,7 +886,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
             params.put("trade_type", request.getTradeType());
             if (request.getStartTime() != null) {
                 params.put("start_time", request.getStartTime());
@@ -762,7 +925,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())) {
+                params.put("pair", request.getPair().toUpperCase());
+            }
+            if(request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             params.put("direction", request.getDirection());
             params.put("offset", request.getOffset());
             if (request.getLeverRate() != null && request.getLeverRate() != 0) {
@@ -789,7 +960,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             params.put("order_id", request.getOrderId());
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRACK_CANCEL, params);
             logger.debug("body:{}", body);
@@ -808,7 +987,15 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
+            if (request.getContractType()!=null){
+                params.put("contract_type",request.getContractType());
+            }
             if (request.getDirection()!=null) {
                 params.put("direction", request.getDirection());
             }
@@ -832,7 +1019,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             if (request.getTradeType()!=null) {
                 params.put("trade_type", request.getTradeType());
             }
@@ -841,6 +1033,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             }
             if (request.getPageSize()!=null){
                 params.put("page_size",request.getPageSize());
+            }
+            if (StringUtils.isNotEmpty(request.getTradePartition())){
+                params.put("trade_partition",request.getTradePartition());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRACK_OPENORDERS, params);
             logger.debug("body:{}", body);
@@ -859,7 +1054,12 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
         String body;
         Map<String, Object> params = new HashMap<>();
         try {
-            params.put("contract_code", request.getContractCode().toUpperCase());
+            if (StringUtils.isNotEmpty(request.getContractCode())) {
+                params.put("contract_code", request.getContractCode().toUpperCase());
+            }
+            if (StringUtils.isNotEmpty(request.getPair())){
+                params.put("pair",request.getPair().toUpperCase());
+            }
             params.put("status",request.getStatus());
             params.put("trade_type", request.getTradeType());
             params.put("create_date",request.getCreateDate());

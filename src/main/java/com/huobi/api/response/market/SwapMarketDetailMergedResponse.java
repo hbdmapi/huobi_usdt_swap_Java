@@ -23,8 +23,6 @@ public class SwapMarketDetailMergedResponse {
     private List<TickBean> tick;
     private Long ts;
 
-    @Data
-    @AllArgsConstructor
     public static class TickBean {
         /**
          * "amount":"0.16",
@@ -56,9 +54,110 @@ public class SwapMarketDetailMergedResponse {
         private String open;
         private Long ts;
         private String vol;
-        private List<BigDecimal> ask;
-        private List<BigDecimal> bid;
+        private List ask;
+        private List bid;
         @SerializedName("trade_turnover")
         private BigDecimal tradeTurnover;
+
+        public String getAmount() {
+            return amount;
+        }
+
+        public String getClose() {
+            return close;
+        }
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public String getHigh() {
+            return high;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public String getLow() {
+            return low;
+        }
+
+        public String getOpen() {
+            return open;
+        }
+
+        public Long getTs() {
+            return ts;
+        }
+
+        public String getVol() {
+            return vol;
+        }
+
+        public List getAsk() {
+            return ask;
+        }
+
+        public List getBid() {
+            return bid;
+        }
+
+        public BigDecimal getTradeTurnover() {
+            return tradeTurnover;
+        }
+
+        public void setAmount(String amount) {
+            this.amount = amount;
+        }
+
+        public void setClose(String close) {
+            this.close = close;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
+        }
+
+        public void setHigh(String high) {
+            this.high = high;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public void setLow(String low) {
+            this.low = low;
+        }
+
+        public void setOpen(String open) {
+            this.open = open;
+        }
+
+        public void setTs(Long ts) {
+            this.ts = ts;
+        }
+
+        public void setVol(String vol) {
+            this.vol = vol;
+        }
+
+        public void setAsk(List ask) {
+            if (ask!=null) {
+                this.ask = ask;
+            }
+        }
+
+        public void setBid(List bid) {
+            if (bid!=null) {
+                this.bid = bid;
+            }
+        }
+
+        public void setTradeTurnover(BigDecimal tradeTurnover) {
+            this.tradeTurnover = tradeTurnover;
+        }
+
     }
 }

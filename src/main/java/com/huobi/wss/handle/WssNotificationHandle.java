@@ -112,11 +112,24 @@ public class WssNotificationHandle {
         channels.stream().forEach(e -> {
             JSONObject sub = new JSONObject();
             sub.put("op", "sub");
+            sub.put("business_type", "all");
+            sub.put("trade_partition", "all");
             sub.put("topic", e);
             webSocketClient.send(sub.toString());
         });
     }
 
+    public void doUnSub(List<String> channels) {
+        channels.stream().forEach(e -> {
+            JSONObject sub = new JSONObject();
+            sub.put("op", "unsub");
+            sub.put("business_type", "all");
+            sub.put("trade_partition", "all");
+            sub.put("topic", e);
+            webSocketClient.send(sub.toString());
+            logger.debug("sub:{}", sub.toString());
+        });
+    }
 
     private void dealPing(Long ts) {
         try {
@@ -149,6 +162,8 @@ public class WssNotificationHandle {
         }
         map.put("op", "auth");
         map.put("type", "api");
+        map.put("business_type", "all");
+        map.put("trade_partition", "all");
         String req = JSON.toJSONString(map);
         logger.info("before send ");
         webSocketClient.send(req);

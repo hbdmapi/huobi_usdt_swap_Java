@@ -11,4 +11,6 @@ public class SwapTpslOpenordersRequest {
     private Integer pageIndex;
     private Integer pageSize;
     private Integer tradeType;
+    private String pair;
+    private String tradePartition;
 }

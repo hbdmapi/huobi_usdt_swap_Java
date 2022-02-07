@@ -68,6 +68,9 @@ public class SwapCrossUserSettlementRecordsResponse {
                 private BigDecimal fee;
                 @SerializedName("fee_asset")
                 private String feeAsset;
+                private String pair;
+                @SerializedName("trade_partition")
+                private String tradePartition;
                 private List<PositionsBean> positions;
 
                 @Builder
@@ -91,6 +94,7 @@ public class SwapCrossUserSettlementRecordsResponse {
                     private BigDecimal settlementPrice;
                     @SerializedName("settlement_type")
                     private String settlementType;
+                    private String pair;
                 }
             }
 

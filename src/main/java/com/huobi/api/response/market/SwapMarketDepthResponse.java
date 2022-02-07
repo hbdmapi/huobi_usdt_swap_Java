@@ -40,8 +40,8 @@ public class SwapMarketDepthResponse {
         private Long mrid;
         private Long ts;
         private Integer version;
-        private List<List<BigDecimal>> asks;
-        private List<List<BigDecimal>> bids;
+        private List asks;
+        private List bids;
 
     }
 }

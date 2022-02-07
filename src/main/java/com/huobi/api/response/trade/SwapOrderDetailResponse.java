@@ -87,6 +87,8 @@ public class SwapOrderDetailResponse {
         private Integer isTpsl;
         @SerializedName("real_profit")
         private BigDecimal realProfit;
+        @SerializedName("trade_partition")
+        private String tradePartition;
         private List<TradesBean> trades;
 
         @Data

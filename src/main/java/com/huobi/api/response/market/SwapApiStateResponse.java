@@ -70,6 +70,7 @@ public class SwapApiStateResponse {
         private String marginMode;
         @SerializedName("margin_account")
         private String MarginAccount;
-
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

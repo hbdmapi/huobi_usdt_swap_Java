@@ -58,7 +58,8 @@ public class SwapSubAccountInfoListResponse {
                 private BigDecimal LiquidationPrice;
                 @SerializedName("risk_rate")
                 private BigDecimal riskRate;
-
+                @SerializedName("trade_partition")
+                private String tradePartition;
             }
         }
     }

@@ -48,6 +48,12 @@ public class SwapCrossSubPositionInfoResponse {
         private String marginMode;
         @SerializedName("margin_account")
         private String marginAccount;
-
+        private String pair;
+        @SerializedName("business_type")
+        private String businessType;
+        @SerializedName("contract_type")
+        private String contractType;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

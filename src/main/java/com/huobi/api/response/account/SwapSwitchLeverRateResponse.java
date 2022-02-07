@@ -26,5 +26,7 @@ public class SwapSwitchLeverRateResponse {
         private Integer leverRate;
         @SerializedName("margin_mode")
         private String marginMode;
+        @SerializedName("trade_partition")
+        private String tradePartition;
     }
 }

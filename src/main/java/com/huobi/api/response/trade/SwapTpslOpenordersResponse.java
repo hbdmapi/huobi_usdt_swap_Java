@@ -66,6 +66,13 @@ public class SwapTpslOpenordersResponse {
             private String sourceOrderId;
             @SerializedName("relation_tpsl_order_id")
             private String relationTpslOrderId;
+            private String pair;
+            @SerializedName("business_type")
+            private String businessType;
+            @SerializedName("contract_type")
+            private String contractType;
+            @SerializedName("trade_partition")
+            private String tradePartition;
         }
     }
 }
