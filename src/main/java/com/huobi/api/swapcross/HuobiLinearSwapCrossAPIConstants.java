@@ -59,5 +59,5 @@ public class HuobiLinearSwapCrossAPIConstants {
     public static final String SWAP_CROSS_TRACK_CANCELALL = "/linear-swap-api/v1/swap_cross_track_cancelall"; // 跟踪委托订单全部撤单
     public static final String SWAP_CROSS_TRACK_OPENORDERS = "/linear-swap-api/v1/swap_cross_track_openorders"; // 跟踪委托订单当前委托
     public static final String SWAP_CROSS_TRACK_HISORDERS = "/linear-swap-api/v1/swap_cross_track_hisorders"; // 跟踪委托订单历史委托
-
+    public static final String SWAP_CROSS_SWITCH_POSITION_MODE="/linear-swap-api/v1/swap_cross_switch_position_mode";//切换持仓模式
 }

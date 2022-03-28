@@ -22,6 +22,12 @@ public class CrossTradeAPITest implements BaseTest {
     CrossTradeAPIServiceImpl huobiCrossAPIService = new CrossTradeAPIServiceImpl("", "");
 
     @Test
+    public void swapCrossSwitchPositionMode(){
+        SwapSwitchPositionModeResponse response=huobiCrossAPIService.swapCrossSwitchPositionModeResponse("usdt","dual_side");
+        logger.debug("切换持仓模式:{}", JSON.toJSONString(response));
+    }
+
+    @Test
     public void swapCrossOrderRequest() {
         SwapCrossOrderRequest request = SwapCrossOrderRequest.builder()
                 .contractCode("BTC-USDT")

@@ -98,6 +98,8 @@ public class SwapTriggerOpenordersResponse {
             private String marginAccount;
             @SerializedName("trade_partition")
             private String tradePartition;
+            @SerializedName("reduce_only")
+            private String reduceOnly;
         }
 
     }

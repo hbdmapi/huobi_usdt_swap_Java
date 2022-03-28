@@ -71,5 +71,7 @@ public class SwapPositionInfoResponse {
         private String marginAccount;
         @SerializedName("trade_partition")
         private String tradePartition;
+        @SerializedName("position_mode")
+        private String positionMode;
     }
 }

@@ -28,4 +28,5 @@ public class SwapCrossTriggerOrderRequest {
     private Integer leverRate;//开仓必须填写，平仓可以不填。杠杆倍数[开仓若有10倍多单，就不能再下20倍多单]
     private String pair;
     private String contractType;
+    private Integer reduceOnly;
 }

@@ -6,6 +6,8 @@ import com.huobi.api.request.trade.*;
 import com.huobi.api.response.trade.*;
 
 public interface CrossTradeAPIService {
+    SwapSwitchPositionModeResponse swapCrossSwitchPositionModeResponse(String marginAccount,String positionMode);//切换持仓模式
+
     SwapCrossOrderResponse swapCrossOrderRequest(SwapCrossOrderRequest request);//合约下单（全仓模式）
 
     SwapCrossBatchorderResponse swapCrossBatchorderRequest(SwapCrossBatchorderRequest request);//合约批量下单（全仓模式）

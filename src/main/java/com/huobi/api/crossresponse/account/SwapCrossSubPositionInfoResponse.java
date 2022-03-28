@@ -55,5 +55,7 @@ public class SwapCrossSubPositionInfoResponse {
         private String contractType;
         @SerializedName("trade_partition")
         private String tradePartition;
+        @SerializedName("position_mode")
+        private String positionMode;
     }
 }

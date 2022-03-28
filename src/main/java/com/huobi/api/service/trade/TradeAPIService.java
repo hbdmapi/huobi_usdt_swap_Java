@@ -4,6 +4,8 @@ import com.huobi.api.request.trade.*;
 import com.huobi.api.response.trade.*;
 
 public interface TradeAPIService {
+    SwapSwitchPositionModeResponse swapSwitchPositionModeResponse(String marginAccount,String positionMode);
+
     SwapOrderResponse swapOrderRequest(SwapOrderRequest request);//合约下单
 
     SwapBatchorderResponse swapBatchorderRequest(SwapBatchorderRequest request);//合约批量下单

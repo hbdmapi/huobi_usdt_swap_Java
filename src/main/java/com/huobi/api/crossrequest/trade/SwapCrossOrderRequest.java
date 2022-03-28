@@ -44,4 +44,5 @@ public class SwapCrossOrderRequest {
     private String slOrderPriceType;
     private String pair;
     private String contractType;
+    private Integer reduceOnly;
 }

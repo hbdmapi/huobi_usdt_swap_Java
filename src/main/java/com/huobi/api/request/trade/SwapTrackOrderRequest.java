@@ -20,4 +20,5 @@ public class SwapTrackOrderRequest {
     private String orderPriceType;
     private String pair;
     private String contractType;
+    private Integer reduceOnly;
 }

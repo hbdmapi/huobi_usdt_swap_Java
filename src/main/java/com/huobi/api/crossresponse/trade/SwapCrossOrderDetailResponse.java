@@ -89,6 +89,8 @@ public class SwapCrossOrderDetailResponse {
         @SerializedName("trade_partition")
         private String tradePartition;
         private List<TradesBean> trades;
+        @SerializedName("reduce_only")
+        private String reduceOnly;
 
         @Data
         @AllArgsConstructor

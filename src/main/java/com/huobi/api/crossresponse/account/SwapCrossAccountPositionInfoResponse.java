@@ -45,6 +45,8 @@ public class SwapCrossAccountPositionInfoResponse {
         private List<ContractDetailBean> contractDetail;
         @SerializedName("futures_contract_detail")
         private List<ContractDetailBean> futuresContractDetail;
+        @SerializedName("position_mode")
+        private String positionMode;
 
         @Data
         @AllArgsConstructor
@@ -113,6 +115,8 @@ public class SwapCrossAccountPositionInfoResponse {
             private String contractType;
             @SerializedName("trade_partition")
             private String tradePartition;
+            @SerializedName("position_mode")
+            private String positionMode;
         }
     }
 }

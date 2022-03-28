@@ -76,5 +76,7 @@ public class SwapCrossOrderInfoResponse {
         private String contractType;
         @SerializedName("trade_partition")
         private String tradePartition;
+        @SerializedName("reduce_only")
+        private String reduceOnly;
     }
 }

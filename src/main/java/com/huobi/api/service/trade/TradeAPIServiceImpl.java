@@ -32,6 +32,27 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
 
     @Override
+    public SwapSwitchPositionModeResponse swapSwitchPositionModeResponse(String marginAccount, String positionMode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+
+            params.put("margin_account", marginAccount);
+            params.put("position_mode", positionMode);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_SWITCH_POSITION_MODE, params);
+            logger.debug("body:{}", body);
+            SwapSwitchPositionModeResponse response = JSON.parseObject(body, SwapSwitchPositionModeResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
     public SwapOrderResponse swapOrderRequest(SwapOrderRequest request) {
         String body;
         try {
@@ -39,7 +60,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
             params.put("volume", request.getVolume());
             params.put("direction", request.getDirection().getValue());
-            params.put("offset", request.getOffset().getValue());
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset().getValue());
+            }
             params.put("order_price_type", request.getOrderPriceType());
             params.put("lever_rate", request.getLeverRate());
             params.put("contract_code", request.getContractCode().toUpperCase());
@@ -67,6 +90,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             if (request.getSlOrderPriceType() != null) {
                 params.put("sl_order_price_type", request.getSlOrderPriceType());
             }
+            if(request.getReduceOnly()!=null){
+                params.put("reduce_only",request.getReduceOnly());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_ORDER, params);
             logger.debug("body:{}", body);
             SwapOrderResponse response = JSON.parseObject(body, SwapOrderResponse.class);
@@ -91,7 +117,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
                         Map<String, Object> params = new HashMap<>();
                         params.put("volume", e.getVolume());
                         params.put("direction", e.getDirection().getValue());
-                        params.put("offset", e.getOffset().getValue());
+                        if (e.getOffset()!=null) {
+                            params.put("offset", e.getOffset().getValue());
+                        }
                         params.put("order_price_type", e.getOrderPriceType());
                         params.put("lever_rate", e.getLeverRate());
                         params.put("contract_code", e.getContractCode());
@@ -119,6 +147,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
                         }
                         if (e.getSlOrderPriceType() != null) {
                             params.put("sl_order_price_type", e.getSlOrderPriceType());
+                        }
+                        if(e.getReduceOnly()!=null){
+                            params.put("reduce_only",e.getReduceOnly());
                         }
                         listMap.add(params);
                     });
@@ -385,7 +416,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             params.put("trigger_price", request.getTriggerPrice());
             params.put("volume", request.getVolume());
             params.put("direction", request.getDirection());
-            params.put("offset", request.getOffset());
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset());
+            }
             if (request.getOrderPrice() != null) {
                 params.put("order_price", request.getOrderPrice());
             }
@@ -394,6 +427,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             }
             if (request.getLeverRate() != null) {
                 params.put("lever_rate", request.getLeverRate());
+            }
+            if(request.getReduceOnly()!=null){
+                params.put("reduce_only",request.getReduceOnly());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRIGGER_ORDER, params);
             logger.debug("body:{}", body);
@@ -761,7 +797,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
         try {
             params.put("contract_code", request.getContractCode().toUpperCase());
             params.put("direction", request.getDirection());
-            params.put("offset", request.getOffset());
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset());
+            }
             if (request.getLeverRate() != null && request.getLeverRate() != 0) {
                 params.put("lever_rate", request.getLeverRate());
             }
@@ -769,6 +807,9 @@ public class TradeAPIServiceImpl implements TradeAPIService {
             params.put("callback_rate", request.getCallbackRate());
             params.put("active_price", request.getActivePrice());
             params.put("order_price_type", request.getOrderPriceType());
+            if(request.getReduceOnly()!=null){
+                params.put("reduce_only",request.getReduceOnly());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapAPIConstants.SWAP_TRACK_ORDER, params);
             logger.debug("body:{}", body);
             SwapTrackOrderResponse response = JSON.parseObject(body, SwapTrackOrderResponse.class);

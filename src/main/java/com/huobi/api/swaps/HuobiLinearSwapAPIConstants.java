@@ -101,6 +101,7 @@ public class HuobiLinearSwapAPIConstants {
     public static final String SWAP_TRACK_CANCELALL = "/linear-swap-api/v1/swap_track_cancelall"; // 跟踪委托订单全部撤单
     public static final String SWAP_TRACK_OPENORDERS = "/linear-swap-api/v1/swap_track_openorders"; // 跟踪委托订单当前委托
     public static final String SWAP_TRACK_HISORDERS = "/linear-swap-api/v1/swap_track_hisorders"; // 跟踪委托订单历史委托
+    public static final String SWAP_SWITCH_POSITION_MODE="/linear-swap-api/v1/swap_switch_position_mode";//切换持仓模式
 
     //合约划转接口
     public static final String USDT_SWAP_TRANSFER = "/v2/account/transfer"; // 1.现货-USDT永续账户间进行资金的划转

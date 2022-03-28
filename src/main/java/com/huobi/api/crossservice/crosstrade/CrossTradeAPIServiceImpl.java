@@ -34,6 +34,26 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
 
 
     @Override
+    public SwapSwitchPositionModeResponse swapCrossSwitchPositionModeResponse(String marginAccount, String positionMode) {
+        String body;
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("margin_account", marginAccount);
+            params.put("position_mode", positionMode);
+            body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_SWITCH_POSITION_MODE, params);
+            logger.debug("body:{}", body);
+            SwapSwitchPositionModeResponse response = JSON.parseObject(body, SwapSwitchPositionModeResponse.class);
+            if ("ok".equalsIgnoreCase(response.getStatus())) {
+                return response;
+            }
+
+        } catch (Exception e) {
+            throw new ApiException(e);
+        }
+        throw new ApiException(body);
+    }
+
+    @Override
     public SwapCrossOrderResponse swapCrossOrderRequest(SwapCrossOrderRequest request) {
         String body;
         try {
@@ -41,7 +61,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
 
             params.put("volume", request.getVolume());
             params.put("direction", request.getDirection().getValue());
-            params.put("offset", request.getOffset().getValue());
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset().getValue());
+            }
             params.put("order_price_type", request.getOrderPriceType());
             params.put("lever_rate", request.getLeverRate());
             if (StringUtils.isNotEmpty(request.getContractCode())) {
@@ -77,6 +99,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             if (request.getSlOrderPriceType() != null) {
                 params.put("sl_order_price_type", request.getSlOrderPriceType());
             }
+            if(request.getReduceOnly()!=null){
+                params.put("reduce_only",request.getReduceOnly());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_ORDER, params);
             logger.debug("body:{}", body);
             SwapCrossOrderResponse response = JSON.parseObject(body, SwapCrossOrderResponse.class);
@@ -101,7 +126,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
                         Map<String, Object> params = new HashMap<>();
                         params.put("volume", e.getVolume());
                         params.put("direction", e.getDirection().getValue());
-                        params.put("offset", e.getOffset().getValue());
+                        if (e.getOffset()!=null) {
+                            params.put("offset", e.getOffset().getValue());
+                        }
                         params.put("order_price_type", e.getOrderPriceType());
                         params.put("lever_rate", e.getLeverRate());
                         if (StringUtils.isNotEmpty(e.getContractCode())) {
@@ -137,7 +164,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
                         if (e.getSlOrderPriceType() != null) {
                             params.put("sl_order_price_type", e.getSlOrderPriceType());
                         }
-
+                        if(e.getReduceOnly()!=null){
+                            params.put("reduce_only",e.getReduceOnly());
+                        }
                         listMap.add(params);
                     });
             Map<String, Object> params = new HashMap<>();
@@ -463,7 +492,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             params.put("trigger_price", request.getTriggerPrice());
             params.put("volume", request.getVolume());
             params.put("direction", request.getDirection());
-            params.put("offset", request.getOffset());
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset());
+            }
             if (request.getOrderPrice() != null) {
                 params.put("order_price", request.getOrderPrice());
             }
@@ -472,6 +503,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             }
             if (request.getLeverRate() != null) {
                 params.put("lever_rate", request.getLeverRate());
+            }
+            if(request.getReduceOnly()!=null){
+                params.put("reduce_only",request.getReduceOnly());
             }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRIGGER_ORDER, params);
             logger.debug("body:{}", body);
@@ -935,7 +969,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
                 params.put("contract_type",request.getContractType());
             }
             params.put("direction", request.getDirection());
-            params.put("offset", request.getOffset());
+            if (request.getOffset()!=null) {
+                params.put("offset", request.getOffset());
+            }
             if (request.getLeverRate() != null && request.getLeverRate() != 0) {
                 params.put("lever_rate", request.getLeverRate());
             }
@@ -943,6 +979,9 @@ public class CrossTradeAPIServiceImpl implements CrossTradeAPIService {
             params.put("callback_rate", request.getCallbackRate());
             params.put("active_price", request.getActivePrice());
             params.put("order_price_type", request.getOrderPriceType());
+            if(request.getReduceOnly()!=null){
+                params.put("reduce_only",request.getReduceOnly());
+            }
             body = HbdmHttpClient.getInstance().doPost(api_key, secret_key, url_prex + HuobiLinearSwapCrossAPIConstants.SWAP_CROSS_TRACK_ORDER, params);
             logger.debug("body:{}", body);
             SwapTrackOrderResponse response = JSON.parseObject(body, SwapTrackOrderResponse.class);

@@ -19,6 +19,11 @@ public class TradeAPITest implements BaseTest {
 
     TradeAPIServiceImpl huobiAPIService = new TradeAPIServiceImpl("", "");
 
+    @Test
+    public void swapSwitchPositionMode(){
+        SwapSwitchPositionModeResponse response=huobiAPIService.swapSwitchPositionModeResponse("btc-usdt","dual_side");
+        logger.debug("切换持仓模式:{}", JSON.toJSONString(response));
+    }
 
     @Test
     public void swapOrderRequest() {
@@ -36,6 +41,7 @@ public class TradeAPITest implements BaseTest {
                 .slTriggerPrice(BigDecimal.valueOf(0.1))
                 .slOrderPrice(BigDecimal.valueOf(0.1))
                 .slOrderPriceType("limit")
+                .reduceOnly(1)
                 .build();
         SwapOrderResponse response =
                 huobiAPIService.swapOrderRequest(request);
